@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppCompatAlertDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Base.NoueTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Remove ActionBar for specific UI -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <!-- Preference -->
+        <item name="preferenceTheme">@style/NoueTheme.AppPreference.Theme</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialog</item>
+
+        <!-- Scrollbar -->
+        <item name="android:smoothScrollbar">true</item>
+        <item name="android:fadeScrollbars">true</item>
+
+        <!-- Transparent nav & status bars -->
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="NoueTheme" parent="Base.NoueTheme">
+        <item name="android:colorBackground">@color/colorWhite</item>
+        <item name="android:colorForeground">@color/fontDark</item>
+
+        <!-- Original AppCompat attributes. -->
+        <item name="colorError">@color/colorRed</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="NoueTheme.Intro" />
+
+    <style name="NoueTheme.Intro.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/fontLight</item>
+    </style>
+
+    <style name="NoueTheme.Intro.App">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/fontLight</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+    <style name="NoueTheme.Intro.Button" parent="NoueTheme.Button">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/fontLight</item>
+        <item name="android:minHeight">56dp</item>
+    </style>
+
+    <style name="NoueTheme.Button" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:minHeight">36dp</item>
+        <item name="android:minWidth">64dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+    </style>
+
+    <style name="NoueTheme.Login" />
+
+    <style name="NoueTheme.Login.Input" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:colorPrimary">@color/colorAccent</item>
+        <item name="android:colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="boxStrokeColor">@color/colorAccent</item>
+        <item name="hintTextColor">@color/colorAccent</item>
+    </style>
+
+    <style name="NoueTheme.Login.Button" parent="Widget.MaterialComponents.Button">
+        <item name="rippleColor">@color/colorWhite</item>
+        <item name="backgroundTint">@color/colorAccent</item>
+    </style>
+
+    <style name="NoueTheme.Text">
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="NoueTheme.Text.Padding">
+        <item name="android:paddingStart">@dimen/padding_text_x</item>
+        <item name="android:paddingEnd">@dimen/padding_text_x</item>
+        <item name="android:paddingTop">@dimen/padding_text_y</item>
+        <item name="android:paddingBottom">@dimen/padding_text_y</item>
+    </style>
+
+    <style name="NoueTheme.Text.Title" parent="Widget.AppCompat.TextView">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle1
+        </item>
+        <item name="android:textColor">@color/fontDark</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="NoueTheme.Text.Description" parent="Widget.AppCompat.TextView">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle2
+        </item>
+        <item name="android:textColor">@color/fontGray</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="NoueTheme.Text.Error">
+        <item name="android:textColor">@color/fontError</item>
+    </style>
+
+    <style name="NoueTheme.Nav">
+        <item name="colorControlHighlight">@color/transparent</item>
+    </style>
+
+    <style name="NoueTheme.ToolBar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:color">@color/fontLight</item>
+        <item name="android:elevation">@dimen/toolbar_elevation</item>
+    </style>
+
+    <style name="NoueTheme.AppAlertDialogContent">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="NoueTheme.AppPreference" />
+
+    <style name="NoueTheme.AppPreference.DialogPreference">
+        <item name="positiveButtonText">@android:string/ok</item>
+        <item name="negativeButtonText">@android:string/cancel</item>
+    </style>
+
+    <style name="NoueTheme.AppPreference.Theme" parent="@style/PreferenceThemeOverlay">
+        <item name="preferenceFragmentCompatStyle">
+            @style/NoueTheme.AppPreference.FragmentCompatStyle
+        </item>
+    </style>
+
+    <style name="NoueTheme.AppPreference.FragmentCompatStyle" parent="@style/PreferenceFragment.Material" />
+
+    <style name="NoueTheme.About" />
+
+    <style name="NoueTheme.About.Button" parent="Widget.MaterialComponents.Button.TextButton.Icon" />
+
+    <style name="NoueTheme.About.Title" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textStyle">normal</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="NoueTheme.About.Description" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">@color/fontGray</item>
+    </style>
+</resources>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="intro_titles">
+        <item>Следите за проектами.\nПо-новому.</item>
+        <item>Создавайте и назначайте\nзадания коллегам.</item>
+        <item>Оставайтесь в курсе\nпрогресса проектов.</item>
+        <item>Делитесь мнением\nо текущих задачах.</item>
+    </string-array>
+
+    <string name="action_sign_in">Войти</string>
+    <string name="action_sign_in_short">Войти</string>
+    <string name="action_sign_up">Зарегистрироваться</string>
+    <string name="command_title">Команда</string>
+    <string name="empty">Пока ничего нет</string>
+    <string name="error_field_required">Пожалуйста, заполните это поле</string>
+    <string name="error_incorrect_response">Неудалось отправить ссылку</string>
+    <string name="error_invalid_email">Проверьте введенный email</string>
+    <string name="error_invalid_password">Пароль слишком короткий</string>
+    <string name="error_request_email"></string>
+    <string name="intro_start">Начать</string>
+    <string name="info">Информация</string>
+    <string name="nav_cards">Доски</string>
+    <string name="nav_feed">Лента</string>
+    <string name="nav_help">Помощь</string>
+    <string name="nav_settings">Настройки</string>
+    <string name="permission_rationale_accounts">Разрешение на использование контактов необходимо для автодополнения email</string>
+    <string name="preference_about_app">О приложении</string>
+    <string name="preference_assigned">Назначено</string>
+    <string name="preference_default_templates">Использовать шаблоны</string>
+    <string name="preference_default_templates_summary">Автоматически добавлять шаблон к заголовку карточки</string>
+    <string name="preference_general">Общие</string>
+    <string name="preference_mute">Не беспокоить</string>
+    <string name="preference_mute_off">Включите, чтобы не получать уведомления</string>
+    <string name="preference_mute_on">Выключите, чтобы получать уведомления</string>
+    <string name="preference_notification">Уведомления</string>
+    <string name="preference_other">Прочее</string>
+    <string name="preference_reported">Отправлено</string>
+    <string name="preference_template_bug">Исправить баг</string>
+    <string name="preference_template_enhancement">Улучшение продукта</string>
+    <string name="preference_template_message">Автоматически добавляется при создании соответствующей карточки</string>
+    <string name="preference_template_suggest">Внести предложение</string>
+    <string name="preference_templates">Шаблоны</string>
+    <string name="preference_watching">Наблюдаемые</string>
+    <string name="prompt_password">Пароль</string>
+    <string name="title_activity_settings">Настройки</string>
+    <string name="soon">Скоро</string>
+    <string name="projects">Проекты</string>
+    <string name="title_activity_about">О приложении</string>
+    <string name="title_activity_login">Вход</string>
+</resources>

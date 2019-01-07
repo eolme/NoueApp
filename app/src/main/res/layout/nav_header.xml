@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<website.petrov.noue.common.widget.ForceClipLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/account_name"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:height="36dp"
+        android:lineSpacingExtra="0dp"
+        android:lineSpacingMultiplier="1"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        app:autoSizeMaxTextSize="36dp"
+        app:autoSizeMinTextSize="12dp"
+        app:autoSizeStepGranularity="1dp"
+        app:autoSizeTextType="uniform"
+        tools:text="Иван Иванов" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/account_about"
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:height="22dp"
+        android:lineSpacingExtra="0dp"
+        android:lineSpacingMultiplier="1"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        app:autoSizeMaxTextSize="22dp"
+        app:autoSizeMinTextSize="12dp"
+        app:autoSizeStepGranularity="1dp"
+        app:autoSizeTextType="uniform"
+        tools:text="web-developer" />
+
+</website.petrov.noue.common.widget.ForceClipLayout>

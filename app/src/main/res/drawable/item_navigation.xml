@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <layer-list>
+            <item android:bottom="@dimen/padding_item_y" android:gravity="center" android:left="@dimen/padding_item_x" android:right="@dimen/padding_item_x" android:top="@dimen/padding_item_y">
+                <shape android:shape="rectangle">
+                    <corners android:radius="@dimen/corner_radius" />
+                    <solid android:color="@color/colorPrimaryActive" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item android:state_pressed="true">
+        <ripple android:color="@color/colorBlack">
+            <item android:id="@android:id/mask" android:bottom="@dimen/padding_item_y" android:left="@dimen/padding_item_x" android:right="@dimen/padding_item_x" android:top="@dimen/padding_item_y">
+                <shape android:shape="rectangle">
+                    <corners android:radius="@dimen/corner_radius" />
+                    <solid android:color="@color/colorBlackInactive" />
+                </shape>
+            </item>
+            <item android:id="@+id/mask" android:bottom="@dimen/padding_item_y" android:left="@dimen/padding_item_x" android:right="@dimen/padding_item_x" android:top="@dimen/padding_item_y">
+                <shape android:shape="rectangle">
+                    <corners android:radius="@dimen/corner_radius" />
+                    <solid android:color="@color/colorBlackInactive" />
+                </shape>
+            </item>
+        </ripple>
+    </item>
+    <item android:drawable="@color/transparent" />
+</selector>

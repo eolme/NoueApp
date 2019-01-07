@@ -1,0 +1,154 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="website.petrov.noue"
+    tools:targetApi="p">
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <application
+        android:name="website.petrov.noue.App"
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/NoueTheme">
+
+        <activity
+            android:name="website.petrov.noue.view.activity.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_default"
+            android:resizeableActivity="false"
+            android:screenOrientation="userPortrait"
+            android:windowSoftInputMode="stateUnspecified|adjustPan">
+
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="website.petrov.noue"
+                    android:scheme="app" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="website.petrov.noue.view.activity.IntroActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="website.petrov.noue.view.activity.SettingsActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name="website.petrov.noue.view.activity.IntroActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_default"
+            android:parentActivityName="website.petrov.noue.view.activity.MainActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="userPortrait"
+            android:windowSoftInputMode="stateUnspecified|adjustPan">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="website.petrov.noue.view.activity.MainActivity" />
+
+            <intent-filter>
+                <action android:name="website.petrov.noue.view.activity.LoginActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name="website.petrov.noue.view.activity.LoginActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_login"
+            android:parentActivityName="website.petrov.noue.view.activity.IntroActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="userPortrait"
+            android:windowSoftInputMode="stateUnspecified|adjustPan">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="website.petrov.noue.view.activity.IntroActivity" />
+
+        </activity>
+
+        <activity
+            android:name="website.petrov.noue.view.activity.ProjectActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_default"
+            android:parentActivityName="website.petrov.noue.view.activity.MainActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="userPortrait"
+            android:windowSoftInputMode="stateUnspecified|adjustPan">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="website.petrov.noue.view.activity.MainActivity" />
+
+        </activity>
+
+        <activity
+            android:name="website.petrov.noue.view.activity.SettingsActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="website.petrov.noue.view.activity.MainActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="userPortrait"
+            android:windowSoftInputMode="stateUnspecified|adjustPan">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="website.petrov.noue.view.activity.MainActivity" />
+
+            <intent-filter>
+                <action android:name="website.petrov.noue.view.activity.AboutActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name="website.petrov.noue.view.activity.AboutActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label=""
+            android:parentActivityName="website.petrov.noue.view.activity.SettingsActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="userPortrait"
+            android:windowSoftInputMode="stateUnspecified|adjustPan">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="website.petrov.noue.view.activity.SettingsActivity" />
+
+        </activity>
+
+    </application>
+</manifest>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="value"
+            type="website.petrov.noue.model.FeedModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view"
+        style="@style/Widget.MaterialComponents.CardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/margin_card_default"
+        android:layout_marginTop="@dimen/margin_card_default"
+        android:layout_marginRight="@dimen/margin_card_default"
+        android:background="?attr/selectableItemBackground"
+        android:maxWidth="512dp"
+        android:maxHeight="512dp"
+        android:minWidth="216dp"
+        android:minHeight="216dp"
+        android:transitionGroup="true"
+        app:cardCornerRadius="@dimen/corner_radius"
+        app:cardElevation="@dimen/card_elevation_1"
+        app:cardUseCompatPadding="true"
+        tools:cardElevation="@dimen/card_elevation_3"
+        tools:layout_gravity="center"
+        tools:showIn="@layout/fragment_feed">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/card_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxWidth="512dp"
+            android:maxHeight="512dp"
+            android:minWidth="216dp"
+            android:minHeight="216dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/card_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@{value.title}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Название проекта" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/card_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@{value.description}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_title"
+                tools:text="Описание проекта" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/card_images"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_subtitle"
+                app:layout_constraintVertical_bias="1.0">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:srcCompat="@drawable/ic_add"
+                    app:tint="@color/colorAccent" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

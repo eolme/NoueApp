@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="website.petrov.noue.MainActivity">
+    <group
+        android:id="@+id/menu_group_main"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/menu_feed"
+            android:checkable="true"
+            android:icon="@drawable/ic_feed"
+            android:title="@string/nav_feed" />
+        <item
+            android:id="@+id/menu_cards"
+            android:checkable="true"
+            android:icon="@drawable/ic_cards"
+            android:title="@string/nav_cards" />
+
+    </group>
+    <group
+        android:id="@+id/menu_group_people"
+        android:checkableBehavior="none">
+
+        <item android:title="@string/command_title">
+            <menu>
+
+                <item
+                    android:id="@+id/command1"
+                    android:checkable="false"
+                    android:enabled="true"
+                    android:icon="@drawable/ic_people"
+                    android:title="Simple Command" />
+                <item
+                    android:id="@+id/command2"
+                    android:checkable="false"
+                    android:enabled="true"
+                    android:icon="@drawable/ic_people"
+                    android:title="Another Command" />
+
+            </menu>
+        </item>
+
+    </group>
+    <group
+        android:id="@+id/menu_group_other"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/menu_settings"
+            android:checkable="false"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/nav_settings" />
+        <item
+            android:id="@+id/menu_help"
+            android:checkable="false"
+            android:icon="@drawable/ic_help"
+            android:title="@string/nav_help" />
+    </group>
+</menu>

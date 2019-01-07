@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="website.petrov.noue.view.activity.MainActivity">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/main_fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="false"
+            android:orientation="vertical"
+            tools:layout="@layout/fragment_projects" />
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|top"
+            android:fitsSystemWindows="false"
+            android:theme="@style/NoueTheme.Nav"
+            app:headerLayout="@layout/nav_header"
+            app:itemBackground="@drawable/item_navigation"
+            app:itemTextAppearance="@style/TextAppearance.AppCompat.Body2"
+            app:itemTextColor="@drawable/item_navigation_text"
+            app:menu="@menu/drawer_view" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</layout>

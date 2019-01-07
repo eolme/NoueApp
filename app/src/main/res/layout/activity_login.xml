@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="website.petrov.noue.view.activity.LoginActivity">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="website.petrov.noue.viewmodel.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_layout"
+            style="@style/NoueTheme.Login.Input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/TextAppearance.Design.Error"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_icon"
+            app:layout_constraintVertical_bias="0.0">
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/email"
+                style="@style/Widget.AppCompat.AutoCompleteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:completionHint=""
+                android:ems="10"
+                android:hint="@string/prompt_email"
+                android:imeActionId="0"
+                android:imeActionLabel="@string/prompt_email"
+                android:imeOptions="actionDone|flagForceAscii"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:text="@={viewModel.email}"
+                android:theme="@style/NoueTheme.Text.Padding" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/email_sign_in_button"
+            style="@style/NoueTheme.Login.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:minHeight="56dp"
+            android:onClick="@{(v) -> viewModel.onLoginClick()}"
+            android:text="@string/action_sign_in"
+            android:textStyle="bold"
+            android:theme="@style/NoueTheme.Text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email_layout"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="13dp"
+            android:minHeight="56dp"
+            app:buttonSize="wide"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email_sign_in_button"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/login_icon"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="center"
+            android:scaleX="1.8"
+            android:scaleY="1.8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@mipmap/ic_launcher_foreground" />
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/login_progress"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sign_in_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

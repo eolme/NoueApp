@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="activatedBackgroundIndicator" format="reference" />
+    <attr name="textColorSecondary" format="reference" />
+
+    <declare-styleable name="RoundImageView">
+        <attr name="color" format="color" />
+        <attr name="background_color" format="color" />
+    </declare-styleable>
+</resources>

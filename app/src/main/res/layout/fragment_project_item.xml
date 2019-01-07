@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="value"
+            type="website.petrov.noue.model.ProjectModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/project_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <website.petrov.noue.common.widget.RoundImageView
+            android:id="@+id/project_item_color"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@color/colorAccent"
+            tools:src="@color/colorAccent" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/project_item_title"
+                style="@style/NoueTheme.Text.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{value.title}"
+                tools:text="Project Name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/project_item_description"
+                style="@style/NoueTheme.Text.Description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{value.description}"
+                tools:text="Project Description" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <website.petrov.noue.common.widget.RoundImageView
+            android:id="@+id/project_item_badge"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginStart="16dp"
+            android:visibility="@{value.badge ? View.VISIBLE : View.INVISIBLE}"
+            app:srcCompat="@color/colorRed"
+            tools:src="@color/colorRed" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

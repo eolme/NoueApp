@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_activity_default">16dp</dimen>
+
+    <dimen name="padding_text_x">12dp</dimen>
+    <dimen name="padding_text_y">16dp</dimen>
+
+    <dimen name="padding_item_x">8dp</dimen>
+    <dimen name="padding_item_y">4dp</dimen>
+
+    <dimen name="margin_text_default">16dp</dimen>
+    <dimen name="margin_card_default">8dp</dimen>
+
+    <dimen name="corner_radius">4dp</dimen>
+
+    <dimen name="card_elevation_1">1dp</dimen>
+    <dimen name="card_elevation_2">2dp</dimen>
+    <dimen name="card_elevation_3">4dp</dimen>
+
+    <dimen name="padding_alert">18dp</dimen>
+
+    <dimen name="toolbar_elevation">4dp</dimen>
+    <dimen name="margin_scroll_default">96dp</dimen>
+</resources>
