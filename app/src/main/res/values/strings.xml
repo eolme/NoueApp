@@ -47,7 +47,7 @@
     <string name="preference_watching">Wathing</string>
     <string name="prompt_email" translatable="false">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="title_activity_default" translatable="false">@string/app_name</string>
+    <string name="title_activity_default" translatable="false">Noue</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_settings">Settings</string>
     <string name="title_activity_about">About</string>

@@ -142,7 +142,7 @@
         <activity
             android:name="website.petrov.noue.view.activity.AboutActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label=""
+            android:label="@string/title_activity_about"
             android:parentActivityName="website.petrov.noue.view.activity.SettingsActivity"
             android:resizeableActivity="false"
             android:screenOrientation="userPortrait"
