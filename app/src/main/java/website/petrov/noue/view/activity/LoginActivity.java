@@ -27,7 +27,6 @@ import website.petrov.noue.R;
 import website.petrov.noue.common.activity.BaseActivity;
 import website.petrov.noue.databinding.ActivityLoginBinding;
 import website.petrov.noue.utilities.Constants;
-import website.petrov.noue.utilities.OS;
 import website.petrov.noue.utilities.Provider;
 import website.petrov.noue.viewmodel.LoginViewModel;
 
@@ -40,8 +39,6 @@ public final class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        OS.setTransparentStatusBar(this);
 
         final GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()

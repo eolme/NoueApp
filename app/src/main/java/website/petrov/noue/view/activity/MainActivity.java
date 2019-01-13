@@ -16,7 +16,6 @@ import website.petrov.noue.common.activity.BaseApplicationActivity;
 import website.petrov.noue.databinding.ActivityMainBinding;
 import website.petrov.noue.repository.data.StorageShared;
 import website.petrov.noue.utilities.Constants;
-import website.petrov.noue.utilities.OS;
 import website.petrov.noue.utilities.Provider;
 import website.petrov.noue.view.fragment.ErrorFragment;
 import website.petrov.noue.view.fragment.FeedFragment;
@@ -36,8 +35,6 @@ public final class MainActivity extends BaseApplicationActivity implements Stora
         super.onCreate(savedInstanceState);
 
         binding = DataBindingUtil.setContentView(MainActivity.this, R.layout.activity_main);
-
-        OS.setTransparentStatusBar(this);
 
         binding.navView.setCheckedItem(R.id.menu_cards);
         binding.navView.setNavigationItemSelectedListener(
@@ -115,8 +112,8 @@ public final class MainActivity extends BaseApplicationActivity implements Stora
                 .commit();
     }
 
-    private void showFirstrunIfNecessary() {
-        if (StorageShared.getFirstRunFlag()) {
+    private void showFirstRunIfNecessary() {
+        if (StorageShared.getFirstRunFlag() && false) {
             startActivityForResult(
                     new Intent(MainActivity.this, IntroActivity.class),
                     Constants.REQUEST_FIRST_RUN);
@@ -125,7 +122,7 @@ public final class MainActivity extends BaseApplicationActivity implements Stora
 
     @Override
     protected void onApplicationVisible() {
-        showFirstrunIfNecessary();
+        showFirstRunIfNecessary();
     }
 
     @Override

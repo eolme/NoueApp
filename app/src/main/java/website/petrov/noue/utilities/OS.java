@@ -43,22 +43,42 @@ public final class OS {
     /**
      * @param context the context
      */
-    public static void setTransparentStatusBar(@NonNull Context context) {
+    public static void setUI(@NonNull Context context, int flags) {
         final Activity activity = Provider.getActivity(context);
 
         if (activity != null) {
             final Window window = activity.getWindow();
             final View decor = window.getDecorView();
 
-            window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-            // window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                decor.setSystemUiVisibility(decor.getSystemUiVisibility() | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            if ((flags & Constants.NO_LIMIT_UI) == Constants.NO_LIMIT_UI) {
+                window.clearFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
             }
 
-            setTransparentStatusBarFlyme(window);
-            setTransparentStatusBarMIUI(window);
+            if ((flags & Constants.TRANSPARENT_STATUS) == Constants.TRANSPARENT_STATUS) {
+                window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            }
+
+            if ((flags & Constants.TRANSPARENT_NAV) == Constants.TRANSPARENT_NAV) {
+                window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            }
+
+            if ((flags & Constants.LIGHT_STATUS) == Constants.LIGHT_STATUS) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    decor.setSystemUiVisibility(decor.getSystemUiVisibility() | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                }
+            }
+
+            if ((flags & Constants.LIGHT_NAV) == Constants.LIGHT_NAV) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    decor.setSystemUiVisibility(decor.getSystemUiVisibility() | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+                }
+            }
+
+            if ((flags & Constants.TRANSPARENT_CUSTOM) == Constants.TRANSPARENT_CUSTOM) {
+                setTransparentStatusBarFlyme(window);
+                setTransparentStatusBarMIUI(window);
+            }
         }
     }
 }

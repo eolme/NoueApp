@@ -19,6 +19,7 @@ android {
             zipAlignEnabled true
             applicationIdSuffix ".debug"
             versionNameSuffix "-DEBUG"
+            crunchPngs false
         }
         release {
             minifyEnabled true

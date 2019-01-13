@@ -10,9 +10,6 @@ import androidx.annotation.Nullable;
 import androidx.core.widget.ContentLoadingProgressBar;
 import androidx.fragment.app.Fragment;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import website.petrov.noue.R;
 import website.petrov.noue.common.widget.FullscreenBindingRecyclerView;
 import website.petrov.noue.utilities.Provider;
@@ -30,13 +27,10 @@ public final class FeedFragment extends Fragment {
 
             recyclerView.setAdapter(new FeedAdapter(R.layout.fragment_card));
 
-            new Timer().schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    bar.setVisibility(View.GONE);
-                    recyclerView.setVisibility(View.VISIBLE);
-                }
-            }, 1000);
+            self.postDelayed(() -> {
+                bar.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.VISIBLE);
+            }, 2000);
         }
         return self;
     }

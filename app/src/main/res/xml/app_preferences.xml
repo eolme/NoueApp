@@ -70,7 +70,7 @@
             android:title="@string/preference_about_app">
 
             <intent
-                android:targetClass="website.petrov.noue.AboutActivity"
+                android:targetClass="website.petrov.noue.view.activity.AboutActivity"
                 android:targetPackage="website.petrov.noue" />
 
         </Preference>
