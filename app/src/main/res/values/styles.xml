@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppCompatAlertDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/secondaryColor</item>
     </style>
 
     <style name="Base.NoueTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -18,44 +18,48 @@
         <item name="android:smoothScrollbar">true</item>
         <item name="android:fadeScrollbars">true</item>
 
-        <!-- Disable translucent nav & status bars -->
+        <!-- Colors -->
+        <item name="colorError">@color/errorTextColor</item>
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorPrimaryVariant">@color/primaryLightColor</item>
+        <item name="colorSecondary">@color/secondaryColor</item>
+        <item name="colorSecondaryVariant">@color/secondaryLightColor</item>
+        <item name="colorAccent">?attr/colorSecondary</item>
+        <item name="colorOnPrimary">@color/primaryTextColor</item>
+        <item name="colorOnSecondary">@color/secondaryTextColor</item>
+        <item name="colorOnBackground">?attr/colorOnPrimary</item>
+
+        <!-- Light nav & status bars -->
+        <item name="isLightTheme">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="M">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="O_MR1">true</item>
+        <item name="android:statusBarColor">@color/colorWhite</item>
+        <item name="android:navigationBarColor">@color/colorWhite</item>
+
+        <!-- Enable transparent nav & status bars
         <item name="android:windowTranslucentNavigation">false</item>
         <item name="android:windowTranslucentStatus">false</item>
-
-        <!-- Enable transparent nav & status bars -->
-        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
-        <item name="android:statusBarColor">@color/transparent</item>
-        <item name="android:navigationBarColor">@color/transparent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>-->
     </style>
 
-    <style name="NoueTheme" parent="Base.NoueTheme">
-        <item name="android:colorBackground">@color/colorWhite</item>
-        <item name="android:colorForeground">@color/fontDark</item>
-
-        <!-- Original AppCompat attributes. -->
-        <item name="colorError">@color/colorRed</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorSecondary">@color/colorAccent</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
+    <style name="NoueTheme" parent="Base.NoueTheme" />
     <style name="NoueTheme.Intro" />
 
     <style name="NoueTheme.Intro.Title">
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/fontLight</item>
+        <item name="android:textColor">@color/alternateTextColor</item>
     </style>
 
     <style name="NoueTheme.Intro.App">
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/fontLight</item>
+        <item name="android:textColor">@color/alternateTextColor</item>
         <item name="textAllCaps">true</item>
     </style>
 
     <style name="NoueTheme.Intro.Button" parent="NoueTheme.Button">
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/fontLight</item>
+        <item name="android:textColor">@color/alternateTextColor</item>
         <item name="android:minHeight">56dp</item>
     </style>
 
@@ -69,17 +73,17 @@
     <style name="NoueTheme.Login" />
 
     <style name="NoueTheme.Login.Input" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="android:colorPrimary">@color/colorAccent</item>
-        <item name="android:colorAccent">@color/colorAccent</item>
-        <item name="colorPrimary">@color/colorAccent</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="boxStrokeColor">@color/colorAccent</item>
-        <item name="hintTextColor">@color/colorAccent</item>
+        <item name="android:colorPrimary">?attr/colorAccent</item>
+        <item name="android:colorAccent">?attr/colorAccent</item>
+        <item name="colorPrimary">?attr/colorAccent</item>
+        <item name="colorAccent">?attr/colorAccent</item>
+        <item name="boxStrokeColor">?attr/colorAccent</item>
+        <item name="hintTextColor">?attr/colorAccent</item>
     </style>
 
     <style name="NoueTheme.Login.Button" parent="Widget.MaterialComponents.Button">
-        <item name="rippleColor">@color/colorWhite</item>
-        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="rippleColor">@color/secondaryRippleColor</item>
+        <item name="backgroundTint">?attr/colorAccent</item>
     </style>
 
     <style name="NoueTheme.Text">
@@ -96,19 +100,19 @@
     <style name="NoueTheme.Text.Title" parent="Widget.AppCompat.TextView">
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle1
         </item>
-        <item name="android:textColor">@color/fontDark</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:textStyle">normal</item>
     </style>
 
     <style name="NoueTheme.Text.Description" parent="Widget.AppCompat.TextView">
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle2
         </item>
-        <item name="android:textColor">@color/fontGray</item>
+        <item name="android:textColor">@color/descriptionTextColor</item>
         <item name="android:textStyle">normal</item>
     </style>
 
     <style name="NoueTheme.Text.Error">
-        <item name="android:textColor">@color/fontError</item>
+        <item name="android:textColor">?attr/colorError</item>
     </style>
 
     <style name="NoueTheme.Nav">
@@ -116,13 +120,13 @@
     </style>
 
     <style name="NoueTheme.ToolBar">
-        <item name="android:background">@color/colorPrimary</item>
-        <item name="android:color">@color/fontLight</item>
+        <item name="android:background">@color/alternateColor</item>
+        <item name="android:color">@color/alternateTextColor</item>
         <item name="android:elevation">@dimen/toolbar_elevation</item>
     </style>
 
     <style name="NoueTheme.AppAlertDialogContent">
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">?attr/colorAccent</item>
     </style>
 
     <style name="NoueTheme.AppPreference" />
@@ -145,12 +149,12 @@
     <style name="NoueTheme.About.Button" parent="Widget.MaterialComponents.Button.TextButton.Icon" />
 
     <style name="NoueTheme.About.Title" parent="TextAppearance.MaterialComponents.Headline1">
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColor">?attr/colorAccent</item>
         <item name="android:textStyle">normal</item>
         <item name="fontFamily">sans-serif-medium</item>
     </style>
 
     <style name="NoueTheme.About.Description" parent="TextAppearance.MaterialComponents.Subtitle1">
-        <item name="android:textColor">@color/fontGray</item>
+        <item name="android:textColor">@color/descriptionTextColor</item>
     </style>
 </resources>

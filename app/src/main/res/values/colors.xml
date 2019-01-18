@@ -3,35 +3,43 @@
     <color name="transparent">#00000000</color>
 
     <color name="colorPink">#FF057C</color>
-    <color name="colorPinkDark">#d60068</color>
+    <color name="colorPinkLight">#ff5eab</color>
+    <color name="colorPinkDark">#c50050</color>
     <color name="colorPurple">#8D0B93</color>
     <color name="colorPurpleDark">#640868</color>
-    <color name="colorBlack">#333333</color>
     <color name="colorWhite">#FFF</color>
     <color name="colorRed">#f44336</color>
-    <color name="colorGray">#ccc</color>
+    <color name="colorGray">#cccccc</color>
+    <color name="colorBlack">#1c1c1c</color>
 
-    <color name="colorPrimaryActive">#1E8D0B93</color>
-    <color name="colorBlackActive">#1E000000</color>
-
-    <color name="colorBlackInactive">#0F000000</color>
-
-    <color name="colorPrimary">@color/colorPurple</color>
-    <color name="colorPrimaryDark">@color/colorPurpleDark</color>
-    <color name="colorAccent">@color/colorPink</color>
-
-    <color name="colorOnPrimary">@color/fontLight</color>
-    <color name="colorOnPrimaryDark">@color/fontLight</color>
-    <color name="colorOnAccent">@color/fontLight</color>
-
-    <color name="fontDark">@color/colorBlack</color>
-    <color name="fontGray">@color/colorGray</color>
-    <color name="fontLight">@color/colorWhite</color>
-    <color name="fontError">@color/colorRed</color>
+    <color name="a11yDarkOnLight">#575757</color>
+    <color name="a11yDarkOnDark">@color/colorBlack</color>
+    <color name="a11yLightOnDark">@color/colorWhite</color>
+    <color name="a11yLightOnLight">@color/colorGray</color>
 
     <color name="gradientStart">@color/colorPink</color>
     <color name="gradientCenter">@color/colorPurple</color>
     <color name="gradientEnd">@color/colorPurpleDark</color>
+
+    <color name="primaryColor">@color/colorWhite</color>
+    <color name="primaryLightColor">@color/colorWhite</color>
+    <color name="primaryDarkColor">@color/colorGray</color>
+
+    <color name="secondaryColor">@color/colorPink</color>
+    <color name="secondaryLightColor">@color/colorPinkLight</color>
+    <color name="secondaryDarkColor">@color/colorPinkDark</color>
+
+    <color name="alternateColor">@color/colorPurple</color>
+    <color name="alternateDarkColor">@color/colorPurpleDark</color>
+
+    <color name="primaryTextColor">@color/a11yDarkOnLight</color>
+    <color name="secondaryTextColor">@color/a11yDarkOnDark</color>
+    <color name="alternateTextColor">@color/a11yLightOnDark</color>
+    <color name="descriptionTextColor">@color/a11yLightOnLight</color>
+    <color name="errorTextColor">@color/colorRed</color>
+
+    <color name="primaryRippleColor">@color/colorGray</color>
+    <color name="secondaryRippleColor">@color/colorWhite</color>
 
     <color name="ic_launcher_background">@color/colorWhite</color>
 </resources>

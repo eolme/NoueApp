@@ -27,8 +27,8 @@
             android:id="@+id/project_item_color"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@color/colorAccent"
-            tools:src="@color/colorAccent" />
+            android:src="@color/alternateColor"
+            tools:src="@color/alternateColor" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"

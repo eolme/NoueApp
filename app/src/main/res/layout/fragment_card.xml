@@ -84,7 +84,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     app:srcCompat="@drawable/ic_add"
-                    app:tint="@color/colorAccent" />
+                    app:tint="@color/alternateColor" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
