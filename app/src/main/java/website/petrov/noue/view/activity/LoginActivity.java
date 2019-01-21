@@ -94,12 +94,18 @@ public final class LoginActivity extends BaseActivity {
         }
 
         final Account[] accounts = AccountManager.get(LoginActivity.this).getAccounts();
-        final List<String> emails = new ArrayList<>();
+        final List<String> emails = new ArrayList<>(accounts.length);
+
+        String email;
         for (Account account : accounts) {
-            if (loginViewModel.isEmail(account.name)) {
-                emails.add(account.name);
+            email = account.name.toLowerCase();
+            if (!emails.contains(email)) {
+                if (loginViewModel.isEmail(email)) {
+                    emails.add(email);
+                }
             }
         }
+
         binding.email.setAdapter(new ArrayAdapter<>(LoginActivity.this,
                 android.R.layout.simple_dropdown_item_1line, emails));
     }
