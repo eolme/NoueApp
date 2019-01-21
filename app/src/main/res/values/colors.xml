@@ -33,8 +33,8 @@
     <color name="alternateDarkColor">@color/colorPurpleDark</color>
 
     <color name="primaryTextColor">@color/a11yDarkOnLight</color>
-    <color name="secondaryTextColor">@color/a11yDarkOnDark</color>
-    <color name="alternateTextColor">@color/a11yLightOnDark</color>
+    <color name="secondaryTextColor">@color/a11yLightOnDark</color>
+    <color name="alternateTextColor">@color/a11yDarkOnDark</color>
     <color name="descriptionTextColor">@color/a11yLightOnLight</color>
     <color name="errorTextColor">@color/colorRed</color>
 

@@ -13,12 +13,12 @@ import org.jetbrains.annotations.Contract;
 
 import website.petrov.noue.BuildConfig;
 import website.petrov.noue.model.FeedModel;
-import website.petrov.noue.model.ProjectModel;
+import website.petrov.noue.model.ProjectItemModel;
 import website.petrov.noue.repository.gateway.FeedDao;
 import website.petrov.noue.repository.gateway.ProjectDao;
 import website.petrov.noue.utilities.Converters;
 
-@Database(entities = {FeedModel.class, ProjectModel.class}, version = BuildConfig.VERSION_CODE)
+@Database(entities = {FeedModel.class, ProjectItemModel.class}, version = BuildConfig.VERSION_CODE)
 @TypeConverters({Converters.class})
 public abstract class StorageDatabase extends RoomDatabase {
     @Nullable

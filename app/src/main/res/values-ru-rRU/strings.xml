@@ -17,6 +17,7 @@
     <string name="error_invalid_email">Проверьте введенный email</string>
     <string name="error_invalid_password">Пароль слишком короткий</string>
     <string name="error_request_email"></string>
+    <string name="error_fragment">Упс! Что-то пошло не так…</string>
     <string name="intro_start">Начать</string>
     <string name="info">Информация</string>
     <string name="nav_cards">Доски</string>

@@ -1,10 +1,10 @@
 package website.petrov.noue.viewmodel;
 
 import website.petrov.noue.common.viewmodel.GenericViewModel;
-import website.petrov.noue.model.ProjectModel;
+import website.petrov.noue.model.ProjectItemModel;
 import website.petrov.noue.repository.data.StorageRepository;
 
-public final class ProjectViewModel extends GenericViewModel<ProjectModel> {
+public final class ProjectsViewModel extends GenericViewModel<ProjectItemModel> {
     @Override
     protected void load() {
         final StorageRepository repo = StorageRepository.getInstance();

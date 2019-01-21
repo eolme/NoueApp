@@ -14,13 +14,14 @@
     <string name="action_sign_in_short">Login</string>
     <string name="action_sign_up">Sign up</string>
     <string name="app_name" translatable="false">Noue</string>
-    <string name="command_title">Comand</string>
+    <string name="command_title">Command</string>
     <string name="empty">Nothing yet</string>
     <string name="error_field_required">Please fill out this field</string>
     <string name="error_incorrect_response">Failed to send link</string>
     <string name="error_invalid_email">Check your email address</string>
     <string name="error_invalid_password">Password is too short</string>
     <string name="error_request_email"></string>
+    <string name="error_fragment">Oops! something went wrong…</string>
     <string name="intro_start">Start</string>
     <string name="info">Info</string>
     <string name="nav_cards">Projects</string>
@@ -44,7 +45,7 @@
     <string name="preference_template_message">Automatically added when creating the card</string>
     <string name="preference_template_suggest">Suggest</string>
     <string name="preference_templates">Templates</string>
-    <string name="preference_watching">Wathing</string>
+    <string name="preference_watching">Watching</string>
     <string name="prompt_email" translatable="false">Email</string>
     <string name="prompt_password">Password</string>
     <string name="title_activity_default" translatable="false">Noue</string>

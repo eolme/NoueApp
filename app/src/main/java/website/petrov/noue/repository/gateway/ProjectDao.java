@@ -11,19 +11,19 @@ import androidx.room.Query;
 import java.util.List;
 
 import website.petrov.noue.common.repository.GenericDao;
-import website.petrov.noue.model.ProjectModel;
+import website.petrov.noue.model.ProjectItemModel;
 
 @Dao
-public abstract class ProjectDao implements GenericDao<ProjectModel> {
+public abstract class ProjectDao implements GenericDao<ProjectItemModel> {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    public abstract void insert(@NonNull ProjectModel row);
+    public abstract void insert(@NonNull ProjectItemModel row);
 
     @Delete
-    public abstract void delete(@NonNull ProjectModel row);
+    public abstract void delete(@NonNull ProjectItemModel row);
 
-    @Query("SELECT * FROM project_table")
-    public abstract LiveData<List<ProjectModel>> getAll();
+    @Query("SELECT * FROM project_item_table")
+    public abstract LiveData<List<ProjectItemModel>> getAll();
 
-    @Query("DELETE FROM project_table")
+    @Query("DELETE FROM project_item_table")
     public abstract void deleteAll();
 }

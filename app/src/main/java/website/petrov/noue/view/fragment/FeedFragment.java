@@ -14,8 +14,19 @@ import website.petrov.noue.R;
 import website.petrov.noue.common.widget.FullscreenBindingRecyclerView;
 import website.petrov.noue.utilities.Provider;
 import website.petrov.noue.view.component.FeedAdapter;
+import website.petrov.noue.viewmodel.FeedViewModel;
 
 public final class FeedFragment extends Fragment {
+    @NonNull
+    private final FeedViewModel viewModel;
+    @NonNull
+    private final FeedAdapter adapter;
+
+    public FeedFragment() {
+        viewModel = new FeedViewModel();
+        adapter = new FeedAdapter();
+    }
+
     @Override
     @Nullable
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -25,7 +36,8 @@ public final class FeedFragment extends Fragment {
             final FullscreenBindingRecyclerView recyclerView = Provider.getView(R.id.feed_list, self);
             final ContentLoadingProgressBar bar = Provider.getView(R.id.feed_progress, self);
 
-            recyclerView.setAdapter(new FeedAdapter(R.layout.fragment_card));
+            recyclerView.setAdapter(adapter);
+            viewModel.getData().observe(this, adapter::updateData);
 
             self.postDelayed(() -> {
                 bar.setVisibility(View.GONE);

@@ -11,25 +11,25 @@ import org.jetbrains.annotations.Contract;
 import website.petrov.noue.common.model.BaseModel;
 
 @Fts4
-@Entity(tableName = "project_table")
-public final class ProjectModel extends BaseModel {
-    @ColumnInfo(name = "project_title")
+@Entity(tableName = "project_item_table")
+public final class ProjectItemModel extends BaseModel {
+    @ColumnInfo(name = "project_item_title")
     private String title;
 
-    @ColumnInfo(name = "project_description")
+    @ColumnInfo(name = "project_item_description")
     private String description;
 
-    @ColumnInfo(name = "project_backgroud")
+    @ColumnInfo(name = "project_item_background")
     private Integer background;
 
-    @ColumnInfo(name = "project_badge")
+    @ColumnInfo(name = "project_item_badge")
     private Boolean badge;
 
     @ColumnInfo(name = "rowid")
     @PrimaryKey(autoGenerate = true)
     private Integer id;
 
-    public ProjectModel(String title, String description, boolean badge, Integer background, Integer id) {
+    public ProjectItemModel(String title, String description, boolean badge, Integer background, Integer id) {
         this.title = title;
         this.description = description;
         this.background = background;
@@ -43,10 +43,10 @@ public final class ProjectModel extends BaseModel {
         if (obj == this) {
             return true;
         }
-        if (!(obj instanceof ProjectModel)) {
+        if (!(obj instanceof ProjectItemModel)) {
             return false;
         }
-        final ProjectModel comp = (ProjectModel) obj;
+        final ProjectItemModel comp = (ProjectItemModel) obj;
         return this.title.contentEquals(comp.title) &&
                 this.description.contentEquals(comp.description) &&
                 this.background.equals(comp.background);

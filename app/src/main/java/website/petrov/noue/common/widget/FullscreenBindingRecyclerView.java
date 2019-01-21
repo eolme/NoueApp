@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import androidx.annotation.IdRes;
+import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -52,7 +52,7 @@ public final class FullscreenBindingRecyclerView extends FullscreenRecyclerView 
             return getLayoutForPosition(position);
         }
 
-        @IdRes
+        @LayoutRes
         protected abstract int getLayoutForPosition(int position);
 
         @NonNull
@@ -75,10 +75,10 @@ public final class FullscreenBindingRecyclerView extends FullscreenRecyclerView 
     }
 
     public abstract static class SingleLayoutAdapter extends Adapter {
-        @IdRes
+        @LayoutRes
         private final int layoutId;
 
-        public SingleLayoutAdapter(@IdRes int layoutId) {
+        public SingleLayoutAdapter(@LayoutRes int layoutId) {
             this.layoutId = layoutId;
         }
 

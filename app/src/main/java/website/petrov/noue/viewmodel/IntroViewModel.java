@@ -14,6 +14,7 @@ import static website.petrov.noue.utilities.Provider.getCompatActivity;
 
 public final class IntroViewModel extends BaseViewModel {
     public void startLogin(@NonNull View view) {
+        view.setEnabled(false);
         AppCompatActivity activity = getCompatActivity(view.getContext());
         if (activity == null) {
             return;

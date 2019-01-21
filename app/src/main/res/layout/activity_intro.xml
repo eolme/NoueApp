@@ -11,62 +11,65 @@
             type="website.petrov.noue.viewmodel.IntroViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <website.petrov.noue.common.widget.FullscreenLayout
         android:id="@+id/activity_intro"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/primary_gradient"
         android:fitsSystemWindows="true">
 
-        <website.petrov.noue.view.component.SlideViewPager
-            android:id="@+id/intro_viewpager"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:overScrollMode="never"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:layout="@layout/fragment_slide" />
+            android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/intro_text"
-            style="@style/NoueTheme.Intro.App"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="48dp"
-            android:text="@string/app_name"
-            app:layout_constraintBottom_toBottomOf="@+id/intro_viewpager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            <website.petrov.noue.view.component.SlideViewPager
+                android:id="@+id/intro_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:layout="@layout/fragment_slide" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/intro_start"
-            style="@style/NoueTheme.Intro.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginEnd="48dp"
-            android:layout_marginBottom="48dp"
-            android:onClick="@{(v) -> viewModel.startLogin(v)}"
-            android:text="@string/intro_start"
-            android:textAlignment="center"
-            android:theme="@style/NoueTheme.Text"
-            app:backgroundTint="@color/transparent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            app:rippleColor="@color/colorWhite" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/intro_text"
+                style="@style/NoueTheme.Intro.App"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="48dp"
+                android:text="@string/app_name"
+                app:layout_constraintBottom_toBottomOf="@+id/intro_viewpager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/intro_start"
+                style="@style/NoueTheme.Intro.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:layout_marginBottom="48dp"
+                android:fitsSystemWindows="true"
+                android:onClick="@{(v) -> viewModel.startLogin(v)}"
+                android:text="@string/intro_start"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </website.petrov.noue.common.widget.FullscreenLayout>
 
 </layout>

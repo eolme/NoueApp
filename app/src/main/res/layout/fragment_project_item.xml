@@ -9,7 +9,7 @@
 
         <variable
             name="value"
-            type="website.petrov.noue.model.ProjectModel" />
+            type="website.petrov.noue.model.ProjectItemModel" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat

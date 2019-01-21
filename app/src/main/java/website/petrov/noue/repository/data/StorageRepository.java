@@ -15,7 +15,7 @@ import java.util.List;
 import website.petrov.noue.common.model.BaseModel;
 import website.petrov.noue.common.repository.GenericDao;
 import website.petrov.noue.model.FeedModel;
-import website.petrov.noue.model.ProjectModel;
+import website.petrov.noue.model.ProjectItemModel;
 import website.petrov.noue.repository.gateway.FeedDao;
 import website.petrov.noue.repository.gateway.ProjectDao;
 
@@ -31,7 +31,7 @@ public final class StorageRepository {
     @Nullable
     private LiveData<List<FeedModel>> mFeed;
     @Nullable
-    private LiveData<List<ProjectModel>> mProjects;
+    private LiveData<List<ProjectItemModel>> mProjects;
 
     private StorageRepository(@NonNull Application application) {
         final StorageDatabase db = StorageDatabase.getDatabase(application);
@@ -58,7 +58,7 @@ public final class StorageRepository {
     }
 
     @NonNull
-    public LiveData<List<ProjectModel>> getProjects() {
+    public LiveData<List<ProjectItemModel>> getProjects() {
         if (mProjects == null) {
             mProjects = mProjectDao.getAll();
         }
@@ -69,7 +69,7 @@ public final class StorageRepository {
         new insertAsyncTask<>(mFeedDao).execute(row);
     }
 
-    public void insertProjectModel(@NonNull ProjectModel row) {
+    public void insertProjectModel(@NonNull ProjectItemModel row) {
         new insertAsyncTask<>(mProjectDao).execute(row);
     }
 

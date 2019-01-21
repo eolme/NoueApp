@@ -14,8 +14,19 @@ import website.petrov.noue.R;
 import website.petrov.noue.common.widget.FullscreenBindingRecyclerView;
 import website.petrov.noue.utilities.Provider;
 import website.petrov.noue.view.component.ProjectsAdapter;
+import website.petrov.noue.viewmodel.ProjectsViewModel;
 
 public final class ProjectsFragment extends Fragment {
+    @NonNull
+    private final ProjectsViewModel viewModel;
+    @NonNull
+    private final ProjectsAdapter adapter;
+
+    public ProjectsFragment() {
+        viewModel = new ProjectsViewModel();
+        adapter = new ProjectsAdapter();
+    }
+
     @Override
     @Nullable
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -25,7 +36,8 @@ public final class ProjectsFragment extends Fragment {
             final FullscreenBindingRecyclerView recyclerView = Provider.getView(R.id.projects_list, self);
             final ContentLoadingProgressBar bar = Provider.getView(R.id.projects_progress, self);
 
-            recyclerView.setAdapter(new ProjectsAdapter(R.layout.fragment_project_item));
+            recyclerView.setAdapter(adapter);
+            viewModel.getData().observe(this, adapter::updateData);
 
             self.postDelayed(() -> {
                 bar.setVisibility(View.GONE);

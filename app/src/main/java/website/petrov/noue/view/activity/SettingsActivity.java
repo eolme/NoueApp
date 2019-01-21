@@ -3,8 +3,6 @@ package website.petrov.noue.view.activity;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import website.petrov.noue.R;
 import website.petrov.noue.common.activity.BaseActivity;
@@ -22,10 +20,10 @@ public final class SettingsActivity extends BaseActivity {
         toolbar.setPaddingRelative(0, Provider.getStatusBarHeight(this), 0, 0);
 
         if (savedInstanceState == null) {
-            final Fragment preferenceFragment = new SettingsFragment();
-            final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.add(R.id.settings_container, preferenceFragment);
-            ft.commit();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.settings_container, new SettingsFragment())
+                    .commit();
         }
     }
 }

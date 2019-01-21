@@ -162,7 +162,7 @@ public final class Provider {
      */
     @Contract("null -> null")
     @Nullable
-    static Activity getActivity(@Nullable Context context) {
+    public static Activity getActivity(@Nullable Context context) {
         if (context == null) return null;
         if (context instanceof Activity) return (Activity) context;
         if (context instanceof ContextWrapper)

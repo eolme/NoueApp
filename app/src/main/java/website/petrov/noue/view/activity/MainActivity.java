@@ -31,6 +31,18 @@ public final class MainActivity extends BaseApplicationActivity implements Stora
     private ProjectsFragment mProjectsFragment;
 
     @Override
+    protected void onApplicationVisible() {
+        if (StorageShared.getFirstRunFlag()) {
+            showIntro();
+            finish();
+        } else {
+            if (mCurrentFragmentType == Constants.FRAGMENT_DEFAULT) {
+                setCurrentFragmentType(Constants.FRAGMENT_CARD);
+            }
+        }
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -44,14 +56,12 @@ public final class MainActivity extends BaseApplicationActivity implements Stora
                             if (mCurrentFragmentType != Constants.FRAGMENT_FEED) {
                                 setCurrentFragmentType(Constants.FRAGMENT_FEED);
                             }
-                            setCurrentFragment();
                             break;
                         }
                         case R.id.menu_cards: {
                             if (mCurrentFragmentType != Constants.FRAGMENT_CARD) {
                                 setCurrentFragmentType(Constants.FRAGMENT_CARD);
                             }
-                            setCurrentFragment();
                             break;
                         }
                         case R.id.menu_settings: {
@@ -60,19 +70,15 @@ public final class MainActivity extends BaseApplicationActivity implements Stora
                         }
                     }
 
-                    if (binding.drawerLayout != null) {
+                    if (menuItem.isCheckable()) {
                         binding.drawerLayout.closeDrawers();
+                        return true;
+                    } else {
+                        return false;
                     }
-
-                    return menuItem.isCheckable();
                 }
         );
 
-        if (mCurrentFragmentType == Constants.FRAGMENT_DEFAULT) {
-            setCurrentFragmentType(Constants.FRAGMENT_CARD);
-        }
-
-        setCurrentFragment();
         onStorageUpdate();
 
         StorageShared.register(this);
@@ -95,47 +101,17 @@ public final class MainActivity extends BaseApplicationActivity implements Stora
             }
             case Constants.FRAGMENT_DEFAULT:
             default: {
-                return new ErrorFragment("Упс! Что-то пошло не так...");
+                return new ErrorFragment(getString(R.string.error_fragment));
             }
         }
     }
 
     private void setCurrentFragmentType(@Constants.FragmentType int fragmentType) {
-        mCurrentFragmentType = fragmentType;
-    }
-
-    private void setCurrentFragment() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.main_fragment_container, getFragmentByType(mCurrentFragmentType))
+                .replace(R.id.main_fragment_container, getFragmentByType(fragmentType))
                 .addToBackStack(null)
                 .commit();
-    }
-
-    private void showFirstRunIfNecessary() {
-        if (StorageShared.getFirstRunFlag() && false) {
-            startActivityForResult(
-                    new Intent(MainActivity.this, IntroActivity.class),
-                    Constants.REQUEST_FIRST_RUN);
-        }
-    }
-
-    @Override
-    protected void onApplicationVisible() {
-        showFirstRunIfNecessary();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == Constants.REQUEST_FIRST_RUN) {
-            if (resultCode == RESULT_OK) {
-                StorageShared.setFirstRunFlag(false);
-            } else {
-                onBackPressed();
-            }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
-        }
     }
 
     @Override
@@ -170,6 +146,10 @@ public final class MainActivity extends BaseApplicationActivity implements Stora
         return super.onKeyUp(keyCode, event);
     }
 
+    public void showIntro() {
+        startActivity(new Intent(MainActivity.this, IntroActivity.class));
+    }
+
     public void showSettings() {
         startActivity(new Intent(MainActivity.this, SettingsActivity.class));
     }
@@ -189,8 +169,8 @@ public final class MainActivity extends BaseApplicationActivity implements Stora
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onDestroy() {
+        super.onDestroy();
         StorageShared.unregister(this);
     }
 }

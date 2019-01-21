@@ -3,6 +3,7 @@ package website.petrov.noue.utilities;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
 import android.view.View;
 import android.view.Window;
@@ -15,7 +16,7 @@ import java.lang.reflect.Method;
 
 @SuppressWarnings("JavaReflectionMemberAccess")
 @SuppressLint("PrivateApi")
-public final class OS {
+public final class UI {
     private static void setTransparentStatusBarFlyme(@NonNull Window window) {
         try {
             final WindowManager.LayoutParams lp = window.getAttributes();
@@ -43,42 +44,43 @@ public final class OS {
     /**
      * @param context the context
      */
-    public static void setUI(@NonNull Context context, int flags) {
+    public static void setFullscreenLayout(@NonNull Context context, boolean darkIcon) {
         final Activity activity = Provider.getActivity(context);
 
         if (activity != null) {
             final Window window = activity.getWindow();
             final View decor = window.getDecorView();
+            int visibility = decor.getSystemUiVisibility();
 
-            if ((flags & Constants.NO_LIMIT_UI) == Constants.NO_LIMIT_UI) {
-                window.clearFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-            }
+            final int clear =
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS |
+                            WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION;
+            final int add =
+                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |
+                            WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS;
 
-            if ((flags & Constants.TRANSPARENT_STATUS) == Constants.TRANSPARENT_STATUS) {
-                window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            }
+            window.setNavigationBarColor(Color.TRANSPARENT);
+            window.setStatusBarColor(Color.TRANSPARENT);
 
-            if ((flags & Constants.TRANSPARENT_NAV) == Constants.TRANSPARENT_NAV) {
-                window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            }
+            window.clearFlags(clear);
+            window.addFlags(add);
 
-            if ((flags & Constants.LIGHT_STATUS) == Constants.LIGHT_STATUS) {
+            if (darkIcon) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    decor.setSystemUiVisibility(decor.getSystemUiVisibility() | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                    visibility |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
                 }
-            }
-
-            if ((flags & Constants.LIGHT_NAV) == Constants.LIGHT_NAV) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    decor.setSystemUiVisibility(decor.getSystemUiVisibility() | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+                    visibility |= View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR;
+                }
+            } else {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    visibility &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+                }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    visibility &= ~View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR;
                 }
             }
-
-            if ((flags & Constants.TRANSPARENT_CUSTOM) == Constants.TRANSPARENT_CUSTOM) {
-                setTransparentStatusBarFlyme(window);
-                setTransparentStatusBarMIUI(window);
-            }
+            decor.setSystemUiVisibility(visibility);
         }
     }
 }

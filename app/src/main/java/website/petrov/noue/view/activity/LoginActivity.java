@@ -16,10 +16,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,12 +36,7 @@ public final class LoginActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
-        loginViewModel.google.setValue(GoogleSignIn.getClient(this, gso));
 
         binding = DataBindingUtil.setContentView(LoginActivity.this, R.layout.activity_login);
         binding.setLifecycleOwner(this);
@@ -62,12 +53,6 @@ public final class LoginActivity extends BaseActivity {
                 attemptLogin();
             }
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
     }
 
     private boolean mayRequestContacts() {

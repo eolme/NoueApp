@@ -67,3 +67,4 @@ modules.xml
 google-services.json
 app/release/*.json
 signing.properties
+keystore.properties

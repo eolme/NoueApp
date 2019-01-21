@@ -1,31 +1,40 @@
-apply plugin: "com.android.application"
+apply plugin: 'com.android.application'
+
+def keystorePropertiesFile = rootProject.file('keystore.properties')
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "website.petrov.noue"
+        applicationId 'website.petrov.noue'
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 7
-        versionName "1.0"
+        versionCode 9
+        versionName '1.0'
         vectorDrawables.useSupportLibrary = true
     }
     signingConfigs {
-        release { }
+        release {
+            keyAlias keystoreProperties['KEY_ALIAS']
+            keyPassword keystoreProperties['KEY_PASSWORD']
+            storeFile file(keystoreProperties['STORE_FILE'])
+            storePassword keystoreProperties['STORE_PASSWORD']
+        }
     }
     buildTypes {
         debug {
             minifyEnabled false
             zipAlignEnabled true
-            applicationIdSuffix ".debug"
-            versionNameSuffix "-DEBUG"
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-DEBUG'
             crunchPngs false
         }
         release {
             minifyEnabled true
             zipAlignEnabled true
             signingConfig signingConfigs.release
-            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
@@ -35,9 +44,10 @@ android {
     dataBinding {
         enabled = true
     }
-    buildToolsVersion = "28.0.3"
+    buildToolsVersion = '28.0.3'
 }
 
+/*
 File propFile = file('signing.properties')
 if (propFile.exists()) {
     Properties props = new Properties()
@@ -57,52 +67,49 @@ if (propFile.exists()) {
 } else {
     android.buildTypes.release.signingConfig = null
 }
+*/
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "androidx.activity:activity:1.0.0-alpha03"
-    implementation "androidx.annotation:annotation:1.0.1"
-    implementation "androidx.appcompat:appcompat:1.1.0-alpha01"
-    implementation "androidx.collection:collection:1.1.0-alpha01"
-    implementation "androidx.constraintlayout:constraintlayout:2.0.0-alpha3"
+    implementation 'androidx.activity:activity:1.0.0-alpha03'
+    implementation 'androidx.annotation:annotation:1.0.1'
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha01'
+    implementation 'androidx.collection:collection:1.1.0-alpha01'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0-alpha01'
-    implementation "androidx.core:core:1.1.0-alpha03"
-    implementation "androidx.databinding:databinding-runtime:3.4.0-alpha10"
-    implementation "androidx.drawerlayout:drawerlayout:1.0.0"
-    implementation "androidx.fragment:fragment:1.1.0-alpha03"
+    implementation 'androidx.core:core:1.1.0-alpha03'
+    implementation 'androidx.databinding:databinding-runtime:3.5.0-alpha01'
+    implementation 'androidx.drawerlayout:drawerlayout:1.0.0'
+    implementation 'androidx.fragment:fragment:1.1.0-alpha03'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha01'
-    implementation "androidx.preference:preference:1.1.0-alpha02"
-    implementation "androidx.recyclerview:recyclerview:1.1.0-alpha01"
-    implementation "androidx.room:room-runtime:2.1.0-alpha03"
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha01"
-    implementation "androidx.vectordrawable:vectordrawable:1.1.0-alpha01"
-    implementation "androidx.viewpager:viewpager:1.0.0"
-    implementation "androidx.loader:loader:1.1.0-alpha01"
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.1.0-alpha01'
+    implementation 'androidx.preference:preference:1.1.0-alpha02'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha01'
+    implementation 'androidx.room:room-runtime:2.1.0-alpha03'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha01'
+    implementation 'androidx.vectordrawable:vectordrawable:1.1.0-alpha01'
+    implementation 'androidx.viewpager:viewpager:1.0.0'
+    implementation 'androidx.loader:loader:1.1.0-alpha01'
 
-    implementation "com.github.bumptech.glide:glide:4.8.0"
-    implementation "com.github.bumptech.glide:okhttp3-integration:4.8.0"
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    implementation 'com.github.bumptech.glide:okhttp3-integration:4.8.0'
 
     implementation 'com.google.android.material:material:1.1.0-alpha02'
-    implementation "com.google.code.gson:gson:2.8.5"
-    implementation "com.google.android.gms:play-services-auth:16.0.1"
+    implementation 'com.google.code.gson:gson:2.8.5'
 
-    implementation "com.squareup.okhttp3:okhttp:3.12.1"
-    implementation "com.squareup.retrofit2:converter-gson:2.5.0"
-    implementation "com.squareup.retrofit2:retrofit:2.5.0"
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
 
-    annotationProcessor "androidx.room:room-compiler:2.1.0-alpha03"
-    annotationProcessor "androidx.databinding:databinding-compiler:3.4.0-alpha10"
+    annotationProcessor 'androidx.room:room-compiler:2.1.0-alpha03'
+    annotationProcessor 'androidx.databinding:databinding-compiler:3.5.0-alpha01'
 
-    implementation 'androidx.lifecycle:lifecycle-common-java8:2.1.0-alpha01'
+    implementation 'org.jetbrains:annotations:16.0.3'
 
-    implementation "org.jetbrains:annotations:16.0.3"
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.2'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.2'
 
-    debugImplementation "com.squareup.leakcanary:leakcanary-android:1.6.2"
-    debugImplementation "com.squareup.leakcanary:leakcanary-support-fragment:1.6.2"
-
-    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:1.6.2"
-
-    implementation "com.facebook.stetho:stetho:1.5.0"
-    implementation "com.facebook.stetho:stetho-okhttp3:1.5.0"
+    debugImplementation 'com.facebook.stetho:stetho:1.5.0'
+    debugImplementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
 }
