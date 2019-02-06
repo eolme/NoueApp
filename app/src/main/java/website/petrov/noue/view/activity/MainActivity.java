@@ -120,6 +120,7 @@ public final class MainActivity extends BaseApplicationActivity implements Stora
         super.onSaveInstanceState(savedInstanceState);
     }
 
+    @Override
     public void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         mCurrentFragmentType = savedInstanceState.getInt(Constants.FRAGMENT_TYPE);
@@ -134,6 +135,7 @@ public final class MainActivity extends BaseApplicationActivity implements Stora
         }
     }
 
+    @Override
     public boolean onKeyUp(int keyCode, @NonNull KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_MENU) {
             if (binding.drawerLayout.isDrawerOpen(binding.navView)) {
