@@ -24,14 +24,14 @@ public final class Connection {
         @Override
         @NonNull
         protected Boolean doInBackground(Void... params) {
-            try {
-                Socket sock = new Socket();
+            boolean result;
+            try (Socket sock = new Socket()) {
                 sock.connect(new InetSocketAddress("8.8.8.8", 53), 1500);
-                sock.close();
-                return true;
+                result = sock.isConnected();
             } catch (Throwable ignored) {
-                return false;
+                result = false;
             }
+            return result;
         }
 
         @Override
