@@ -22,7 +22,7 @@ import website.petrov.noue.utilities.Converters;
 @TypeConverters({Converters.class})
 public abstract class StorageDatabase extends RoomDatabase {
     @Nullable
-    private static StorageDatabase mInstance;
+    private static volatile StorageDatabase mInstance;
 
     @Contract("_ -> !null")
     static StorageDatabase getDatabase(@NonNull Context context) {
