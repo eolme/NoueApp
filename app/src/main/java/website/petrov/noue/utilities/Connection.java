@@ -28,7 +28,7 @@ public final class Connection {
             try (Socket sock = new Socket()) {
                 sock.connect(new InetSocketAddress("8.8.8.8", 53), 1500);
                 result = sock.isConnected();
-            } catch (Throwable ignored) {
+            } catch (Exception ignored) {
                 result = false;
             }
             return result;

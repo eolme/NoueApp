@@ -221,7 +221,7 @@ public final class RoundImageView extends AppCompatImageView {
             drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
             drawable.draw(canvas);
             return bitmap;
-        } catch (Throwable ignored) {
+        } catch (Exception ignored) {
             return null;
         }
     }

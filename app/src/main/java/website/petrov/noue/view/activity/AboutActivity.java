@@ -24,7 +24,7 @@ public final class AboutActivity extends AppCompatActivity {
         final String appPackageName = getPackageName();
         try {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
-        } catch (Throwable ignored) {
+        } catch (Exception ignored) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
         }
     }
