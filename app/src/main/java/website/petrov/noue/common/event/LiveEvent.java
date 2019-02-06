@@ -13,6 +13,7 @@ public final class LiveEvent<T> extends MutableLiveData<T> {
     private final AtomicBoolean mPending = new AtomicBoolean(false);
 
     @MainThread
+    @Override
     public void observe(@NonNull LifecycleOwner owner, @NonNull final Observer<? super T> observer) {
         super.observe(owner, data -> {
             if (mPending.compareAndSet(true, false)) {
@@ -22,6 +23,7 @@ public final class LiveEvent<T> extends MutableLiveData<T> {
     }
 
     @MainThread
+    @Override
     public void setValue(@Nullable T t) {
         mPending.set(true);
         super.setValue(t);
