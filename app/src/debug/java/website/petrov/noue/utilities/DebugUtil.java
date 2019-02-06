@@ -13,4 +13,6 @@ public final class DebugUtil {
         LeakCanary.install(app);
         Stetho.initializeWithDefaults(app);
     }
+
+    private DebugUtil() {} // hide constructor
 }
