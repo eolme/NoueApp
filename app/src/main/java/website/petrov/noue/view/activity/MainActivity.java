@@ -52,22 +52,24 @@ public final class MainActivity extends BaseApplicationActivity implements Stora
         binding.navView.setNavigationItemSelectedListener(
                 menuItem -> {
                     switch (menuItem.getItemId()) {
-                        case R.id.menu_feed: {
+                        case R.id.menu_feed:
                             if (mCurrentFragmentType != Constants.FRAGMENT_FEED) {
                                 setCurrentFragmentType(Constants.FRAGMENT_FEED);
                             }
                             break;
-                        }
-                        case R.id.menu_cards: {
+
+                        case R.id.menu_cards:
                             if (mCurrentFragmentType != Constants.FRAGMENT_CARD) {
                                 setCurrentFragmentType(Constants.FRAGMENT_CARD);
                             }
                             break;
-                        }
-                        case R.id.menu_settings: {
+
+                        case R.id.menu_settings:
                             showSettings();
                             break;
-                        }
+
+                        default:
+                            break;
                     }
 
                     if (menuItem.isCheckable()) {
@@ -87,22 +89,21 @@ public final class MainActivity extends BaseApplicationActivity implements Stora
     @NonNull
     private Fragment getFragmentByType(@Constants.FragmentType int fragmentType) {
         switch (fragmentType) {
-            case Constants.FRAGMENT_CARD: {
+            case Constants.FRAGMENT_CARD:
                 if (mProjectsFragment == null) {
                     mProjectsFragment = new ProjectsFragment();
                 }
                 return mProjectsFragment;
-            }
-            case Constants.FRAGMENT_FEED: {
+
+            case Constants.FRAGMENT_FEED:
                 if (mFeedFragment == null) {
                     mFeedFragment = new FeedFragment();
                 }
                 return mFeedFragment;
-            }
+
             case Constants.FRAGMENT_DEFAULT:
-            default: {
+            default:
                 return new ErrorFragment(getString(R.string.error_fragment));
-            }
         }
     }
 
