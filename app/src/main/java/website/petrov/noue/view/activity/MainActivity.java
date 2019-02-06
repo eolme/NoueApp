@@ -23,7 +23,7 @@ import website.petrov.noue.view.fragment.ProjectsFragment;
 
 public final class MainActivity extends BaseApplicationActivity implements StorageShared.UpdateListener {
     @Constants.FragmentType
-    private static int mCurrentFragmentType = Constants.FRAGMENT_DEFAULT;
+    private int mCurrentFragmentType = Constants.FRAGMENT_DEFAULT;
     private ActivityMainBinding binding;
     @Nullable
     private FeedFragment mFeedFragment;
