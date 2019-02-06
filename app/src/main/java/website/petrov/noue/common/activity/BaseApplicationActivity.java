@@ -12,7 +12,7 @@ import website.petrov.noue.utilities.Constants;
 
 public abstract class BaseApplicationActivity extends BaseActivity {
     @Constants.ApplicationState
-    private static int mApplicationState = Constants.STATE_VISIBLE;
+    private int mApplicationState = Constants.STATE_VISIBLE;
 
     protected abstract void onApplicationVisible();
 
