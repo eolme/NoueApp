@@ -54,4 +54,6 @@ public final class UI {
             decor.setSystemUiVisibility(visibility);
         }
     }
+
+    private UI() {} // hide constructor
 }

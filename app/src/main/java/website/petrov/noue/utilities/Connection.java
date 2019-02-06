@@ -39,4 +39,6 @@ public final class Connection {
             mConsumer.accept(internet);
         }
     }
+
+    private Connection() {} // hide constructor
 }

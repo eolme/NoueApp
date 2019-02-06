@@ -27,4 +27,6 @@ public final class Converters {
     public static String fromArrayList(@Nullable ArrayList<String> list) {
         return gson.toJson(list);
     }
+
+    private Converters() {} // hide constructor
 }

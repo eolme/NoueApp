@@ -50,10 +50,16 @@ public final class Constants {
         public static final String STORAGE_ACCOUNT_EMAIL = "storage_account_email";
         @Nls
         public static final String STORAGE_ACCOUNT_EMAIL_DEFAULT = "";
+
+        private Storage() {} // hide constructor
     }
 
     public static final class Debug {
         @NonNls
         public static final  String TAG = "[NOUE]";
+
+        private Debug() {} // hide constructor
     }
+
+    private Constants() {} // hide constructor
 }
