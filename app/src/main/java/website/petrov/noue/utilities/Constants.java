@@ -22,15 +22,6 @@ public final class Constants {
     public static final int STATE_HIDDEN = 683336;
     public static final int STATE_VISIBLE = 4828593;
 
-    public static final int TRANSPARENT_NAV = 0b000001;
-    public static final int TRANSPARENT_STATUS = 0b000010;
-    public static final int LIGHT_NAV = 0b000100;
-    public static final int LIGHT_STATUS = 0b001000;
-    public static final int LIGHT_UI = LIGHT_NAV | LIGHT_STATUS;
-    public static final int TRANSPARENT_UI = TRANSPARENT_NAV | TRANSPARENT_STATUS;
-    public static final int TRANSPARENT_CUSTOM = 0b010000;
-    public static final int NO_LIMIT_UI = 0b100000;
-
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({FRAGMENT_CARD, FRAGMENT_FEED, FRAGMENT_DEFAULT})
     public @interface FragmentType {
@@ -39,12 +30,6 @@ public final class Constants {
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({STATE_HIDDEN, STATE_VISIBLE})
     public @interface ApplicationState {
-    }
-
-    @Retention(RetentionPolicy.SOURCE)
-    @IntDef({TRANSPARENT_NAV, TRANSPARENT_STATUS, TRANSPARENT_UI, TRANSPARENT_CUSTOM, LIGHT_NAV,
-            LIGHT_STATUS, LIGHT_UI, NO_LIMIT_UI})
-    public @interface UIFlag {
     }
 
     public static final class Storage {
