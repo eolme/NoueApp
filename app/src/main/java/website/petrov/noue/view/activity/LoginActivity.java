@@ -81,10 +81,10 @@ public final class LoginActivity extends BaseActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
-        if (requestCode == Constants.REQUEST_GET_ACCOUNTS) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                populateAutoComplete();
-            }
+        if (requestCode == Constants.REQUEST_GET_ACCOUNTS &&
+                grantResults.length == 1 &&
+                grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            populateAutoComplete();
         }
     }
 
@@ -99,10 +99,8 @@ public final class LoginActivity extends BaseActivity {
         String email;
         for (Account account : accounts) {
             email = account.name.toLowerCase();
-            if (!emails.contains(email)) {
-                if (loginViewModel.isEmail(email)) {
-                    emails.add(email);
-                }
+            if (!emails.contains(email) && loginViewModel.isEmail(email)) {
+                emails.add(email);
             }
         }
 
