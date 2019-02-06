@@ -27,6 +27,16 @@ public final class LoginModel extends BaseModel {
         return email.contentEquals(comp.email);
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 17;
+
+        hash ^= email.hashCode();
+
+        return hash;
+    }
+
+
     @Contract(pure = true)
     public String getEmail() {
         return email;

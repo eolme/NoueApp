@@ -33,4 +33,14 @@ public final class SlideModel extends BaseModel {
         final SlideModel comp = (SlideModel) obj;
         return title.contentEquals(comp.title);
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 17;
+
+        hash ^= title.hashCode();
+
+        return hash;
+    }
+
 }

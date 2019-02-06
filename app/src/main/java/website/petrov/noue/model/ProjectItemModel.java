@@ -52,6 +52,18 @@ public final class ProjectItemModel extends BaseModel {
                 this.background.equals(comp.background);
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 17;
+
+        hash ^= title.hashCode();
+        hash ^= description.hashCode();
+        hash ^= background.hashCode();
+        hash ^= badge.hashCode();
+
+        return hash;
+    }
+
     @Contract(pure = true)
     public String getTitle() {
         return this.title;

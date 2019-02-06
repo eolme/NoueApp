@@ -50,6 +50,18 @@ public final class FeedModel extends BaseModel {
                 this.avatars.equals(comp.avatars);
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 17;
+
+        hash ^= title.hashCode();
+        hash ^= description.hashCode();
+        hash ^= avatars.hashCode();
+
+        return hash;
+    }
+
+
     @Contract(pure = true)
     public String getTitle() {
         return this.title;
