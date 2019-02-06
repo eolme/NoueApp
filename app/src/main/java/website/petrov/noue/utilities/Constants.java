@@ -69,6 +69,6 @@ public final class Constants {
 
     public static final class Debug {
         @NonNls
-        public static String TAG = "[NOUE]";
+        public static final  String TAG = "[NOUE]";
     }
 }
