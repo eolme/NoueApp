@@ -23,6 +23,8 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import org.jetbrains.annotations.Contract;
 
+import java.util.Objects;
+
 import website.petrov.noue.R;
 
 /**
@@ -76,7 +78,7 @@ public final class RoundImageView extends AppCompatImageView {
 
     @Override
     public void setColorFilter(@Nullable ColorFilter colorFilter) {
-        if (mColorFilter == colorFilter) {
+        if (Objects.equals(mColorFilter, colorFilter)) {
             return;
         }
 
@@ -105,7 +107,7 @@ public final class RoundImageView extends AppCompatImageView {
     public void onDraw(@NonNull Canvas canvas) {
         final Drawable currentDrawable = getDrawable();
 
-        if (mDrawable != currentDrawable) {
+        if (!Objects.equals(mDrawable, currentDrawable)) {
             mDrawable = currentDrawable;
             mImage = drawableToBitmap(mDrawable);
             updateShader();
