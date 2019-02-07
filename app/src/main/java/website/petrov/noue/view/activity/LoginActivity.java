@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import website.petrov.noue.R;
 import website.petrov.noue.common.activity.BaseActivity;
@@ -98,7 +99,7 @@ public final class LoginActivity extends BaseActivity {
 
         String email;
         for (Account account : accounts) {
-            email = account.name.toLowerCase();
+            email = account.name.toLowerCase(Locale.getDefault());
             if (!emails.contains(email) && loginViewModel.isEmail(email)) {
                 emails.add(email);
             }
