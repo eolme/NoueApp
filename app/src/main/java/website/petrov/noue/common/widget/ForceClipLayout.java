@@ -7,6 +7,7 @@ import android.view.Gravity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.core.view.GravityCompat;
 
 import org.jetbrains.annotations.Contract;
 
@@ -33,14 +34,13 @@ public final class ForceClipLayout extends LinearLayoutCompat {
         super.setClipToPadding(true);
 
         switch (getOrientation()) {
-            case HORIZONTAL: {
-                setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
+            case VERTICAL:
+                setGravity(Gravity.CENTER_HORIZONTAL | Gravity.TOP);
                 break;
-            }
-            case VERTICAL: {
-                setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
+            case HORIZONTAL:
+            default:
+                setGravity(GravityCompat.START | Gravity.CENTER_VERTICAL);
                 break;
-            }
         }
     }
 
