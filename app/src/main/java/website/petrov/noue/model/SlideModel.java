@@ -36,11 +36,7 @@ public final class SlideModel extends BaseModel {
 
     @Override
     public int hashCode() {
-        int hash = 17;
-
-        hash ^= title.hashCode();
-
-        return hash;
+        return 17 ^ title.hashCode();
     }
 
 }

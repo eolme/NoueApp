@@ -29,11 +29,7 @@ public final class LoginModel extends BaseModel {
 
     @Override
     public int hashCode() {
-        int hash = 17;
-
-        hash ^= email.hashCode();
-
-        return hash;
+        return 17 ^ email.hashCode();
     }
 
 

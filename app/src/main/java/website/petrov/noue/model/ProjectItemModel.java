@@ -54,14 +54,11 @@ public final class ProjectItemModel extends BaseModel {
 
     @Override
     public int hashCode() {
-        int hash = 17;
-
-        hash ^= title.hashCode();
-        hash ^= description.hashCode();
-        hash ^= background.hashCode();
-        hash ^= badge.hashCode();
-
-        return hash;
+        return 17 ^
+                title.hashCode() ^
+                description.hashCode() ^
+                background.hashCode() ^
+                badge.hashCode();
     }
 
     @Contract(pure = true)

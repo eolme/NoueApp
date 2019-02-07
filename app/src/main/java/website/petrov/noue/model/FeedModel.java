@@ -52,13 +52,10 @@ public final class FeedModel extends BaseModel {
 
     @Override
     public int hashCode() {
-        int hash = 17;
-
-        hash ^= title.hashCode();
-        hash ^= description.hashCode();
-        hash ^= avatars.hashCode();
-
-        return hash;
+        return 17 ^
+                title.hashCode() ^
+                description.hashCode() ^
+                avatars.hashCode();
     }
 
 
