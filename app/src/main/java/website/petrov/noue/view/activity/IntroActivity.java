@@ -21,7 +21,9 @@ public final class IntroActivity extends BaseApplicationActivity {
 
     @Override
     protected void onApplicationVisible() {
-        binding.introViewpager.setCurrentItem(0);
+        if (binding != null) {
+            binding.introViewpager.setCurrentItem(0);
+        }
     }
 
     @Override
