@@ -7,9 +7,9 @@ import org.jetbrains.annotations.Contract;
 
 import java.util.List;
 
-import website.petrov.noue.common.model.BaseModel;
+import website.petrov.noue.common.model.Model;
 
-public abstract class GenericViewModel<M extends BaseModel> extends BaseDynamicViewModel {
+public abstract class GenericViewModel<M extends Model> extends BaseDynamicViewModel {
     protected MutableLiveData<List<M>> models;
 
     @Contract("-> !null")

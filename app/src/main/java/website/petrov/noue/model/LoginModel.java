@@ -5,9 +5,9 @@ import androidx.annotation.Nullable;
 
 import org.jetbrains.annotations.Contract;
 
-import website.petrov.noue.common.model.BaseModel;
+import website.petrov.noue.common.model.Model;
 
-public final class LoginModel extends BaseModel {
+public final class LoginModel implements Model {
     private final String email;
 
     public LoginModel(@NonNull String email) {
@@ -31,7 +31,6 @@ public final class LoginModel extends BaseModel {
     public int hashCode() {
         return 17 ^ email.hashCode();
     }
-
 
     @Contract(pure = true)
     public String getEmail() {

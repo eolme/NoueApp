@@ -4,8 +4,8 @@ import androidx.annotation.NonNull;
 
 import java.util.List;
 
-import website.petrov.noue.common.model.BaseModel;
+import website.petrov.noue.common.model.Model;
 
-public interface LiveAdapter<M extends BaseModel> {
+public interface LiveAdapter<M extends Model> {
     void updateData(@NonNull List<M> data);
 }

@@ -10,11 +10,11 @@ import org.jetbrains.annotations.Contract;
 
 import java.util.ArrayList;
 
-import website.petrov.noue.common.model.BaseModel;
+import website.petrov.noue.common.model.Model;
 
 @Fts4
 @Entity(tableName = "feed_table")
-public final class FeedModel extends BaseModel {
+public final class FeedModel implements Model {
     @ColumnInfo(name = "feed_title")
     private String title;
 

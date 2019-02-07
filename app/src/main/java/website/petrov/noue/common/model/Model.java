@@ -4,7 +4,8 @@ import androidx.annotation.Nullable;
 
 import org.jetbrains.annotations.Contract;
 
-public abstract class BaseModel {
+public interface Model {
     @Contract(value = "null -> false", pure = true)
-    public abstract boolean equals(@Nullable Object obj);
+    boolean equals(@Nullable Object obj);
+    int hashCode();
 }

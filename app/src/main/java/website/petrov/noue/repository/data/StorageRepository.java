@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-import website.petrov.noue.common.model.BaseModel;
+import website.petrov.noue.common.model.Model;
 import website.petrov.noue.common.repository.GenericDao;
 import website.petrov.noue.model.FeedModel;
 import website.petrov.noue.model.ProjectItemModel;
@@ -73,7 +73,7 @@ public final class StorageRepository {
         new insertAsyncTask<>(mProjectDao).execute(row);
     }
 
-    private static class insertAsyncTask<M extends BaseModel, D extends GenericDao<M>> extends AsyncTask<M, Void, Void> {
+    private static class insertAsyncTask<M extends Model, D extends GenericDao<M>> extends AsyncTask<M, Void, Void> {
         @NonNull
         private D mAsyncTaskDao;
 

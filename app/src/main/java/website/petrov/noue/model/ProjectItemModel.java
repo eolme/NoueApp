@@ -8,11 +8,11 @@ import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.Contract;
 
-import website.petrov.noue.common.model.BaseModel;
+import website.petrov.noue.common.model.Model;
 
 @Fts4
 @Entity(tableName = "project_item_table")
-public final class ProjectItemModel extends BaseModel {
+public final class ProjectItemModel implements Model {
     @ColumnInfo(name = "project_item_title")
     private String title;
 

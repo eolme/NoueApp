@@ -5,9 +5,9 @@ import androidx.annotation.Nullable;
 
 import org.jetbrains.annotations.Contract;
 
-import website.petrov.noue.common.model.BaseModel;
+import website.petrov.noue.common.model.Model;
 
-public final class SlideModel extends BaseModel {
+public final class SlideModel implements Model {
     private final String title;
 
     public SlideModel(@NonNull String title) {
