@@ -1,8 +1,6 @@
 apply plugin: 'com.android.application'
 
-def keystorePropertiesFile = rootProject.file('keystore.properties')
-def keystoreProperties = new Properties()
-keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+def isRunningOnTravis = System.getenv("CI") == "true"
 
 android {
     compileSdkVersion 28
@@ -15,12 +13,7 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
     signingConfigs {
-        release {
-            keyAlias keystoreProperties['KEY_ALIAS']
-            keyPassword keystoreProperties['KEY_PASSWORD']
-            storeFile file(keystoreProperties['STORE_FILE'])
-            storePassword keystoreProperties['STORE_PASSWORD']
-        }
+        release {}
     }
     buildTypes {
         debug {
@@ -45,6 +38,22 @@ android {
         enabled = true
     }
     buildToolsVersion = '28.0.3'
+
+    if (isRunningOnTravis) {
+        signingConfigs.release.storeFile = file("../nouekey-last.jks")
+        signingConfigs.release.storePassword = System.getenv("keystore_password")
+        signingConfigs.release.keyAlias = System.getenv("keystore_alias")
+        signingConfigs.release.keyPassword = System.getenv("keystore_alias_password")
+    } else {
+        def keystorePropertiesFile = rootProject.file('keystore.properties')
+        def keystoreProperties = new Properties()
+        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+        signingConfigs.release.storeFile = file(keystoreProperties['STORE_FILE'])
+        signingConfigs.release.storePassword = keystoreProperties['STORE_PASSWORD']
+        signingConfigs.release.keyAlias = keystoreProperties['KEY_ALIAS']
+        signingConfigs.release.keyPassword = keystoreProperties['KEY_PASSWORD']
+    }
 }
 
 dependencies {

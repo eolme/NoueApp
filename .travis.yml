@@ -1,0 +1,54 @@
+language: android
+sudo: required
+jdk: openjdk8
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - "$HOME/.gradle/caches/"
+    - "$HOME/.gradle/wrapper/"
+    - "$HOME/.android/build-cache"
+env:
+  global:
+    - ANDROID_API=28
+    - EMULATOR_API=28
+    - ANDROID_BUILD_TOOLS=28.0.3
+    - ADB_INSTALL_TIMEOUT=5
+android:
+  components:
+    - tools
+    - tools
+    - platform-tools
+    - build-tools-$ANDROID_BUILD_TOOLS
+    - android-$ANDROID_API
+    - extra
+    - extra-google-m2repository
+    - extra-android-m2repository
+  licenses:
+    - android-sdk-preview-license-.+
+    - android-sdk-license-.+
+    - google-gdk-license-.+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_3f54ea8ff28e_key -iv $encrypted_3f54ea8ff28e_iv
+    -in nouekey-last.jks.enc -out nouekey-last.jks -d
+  - yes | sudo sdkmanager "platforms;android-28" "build-tools;28.0.3"
+  - yes | sudo sdkmanager --licenses
+  - chmod +x gradlew
+  - "./gradlew dependencies || true"
+before_script:
+  - chmod +x gradlew
+script:
+  - "./gradlew clean assembleRelease"
+deploy:
+  provider: releases
+  file_glob: true
+  file: /home/travis/build/eolme/NoueApp/app/build/outputs/apk/release/*
+  skip_cleanup: true
+  overwrite: true
+  on:
+    repo: eolme/NoueApp
+    tags: true
+    jdk: openjdk8
+  api_key:
+    secure: YhQxNP9+lH2Nq8mwpMcdMThqEvuqM1kCoXURe+wKbhDmH/n5B5N4fui72R5XPn6BUpM4IE+w84E+zf6zeTHoMyQP8e2y4t6fDSNOvTgIriA2LiU6ast387TyuuvSGV6DaJHODL8OWc2L7EukSgO++qDvoEJejpkJrjXqYrCIoDvCEx9uDOnlnPWkNVt3+o7Dfq946QmA2QpUbq+OWwr45EJsiN6UDLlokQTIwHZ5Mw9D5SZjXBO+nkb1JPgLy926LU1W8QEEjudGCs5iUoz7OsI/kHAHaOWCFQVkgRz1o8kiYspXAaOhMk+6k6GyOSkewCc1XQ2rv2TDC3M8qlRZtEQPVYqXCRFeneDdaaScna2Irb+haCakcVAs0IeOkI1msbJ7VhNJizXWaLu5X/0iRE7pXAK53L6w3AwO9HKWrfza/xvAjBD/ItX2ATyCI2TKi6/19cKTiG7fB8Q+xrlQpaA5OGdQbuQ62aKs7Wj7ASynLcYH1A9FKgkkHOJOCxxaQJMdsXNGi9lVB8u4k+wjwzX+wfEUj3Jfl97rQEh7hqensDB0Rm0yN3Ex75y62DnMGvz9GSgt37VbBk/dWFjUqnTz1xqfsXmLnKz88+hlYsINYxKMHNJuG/HPBdiN2RYT/wmxJ9admkUeiiwTUKyeTFJoSsHnyxJT347kbrXXapw=
