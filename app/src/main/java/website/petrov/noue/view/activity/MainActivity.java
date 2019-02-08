@@ -170,10 +170,4 @@ public final class MainActivity extends BaseApplicationActivity implements Stora
         }
         mAccountAbout.setText(StorageShared.getAccountAbout());
     }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        StorageShared.unregister(this);
-    }
 }
