@@ -9,44 +9,35 @@ before_cache:
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
-    - "$HOME/.gradle/caches/"
-    - "$HOME/.gradle/wrapper/"
-    - "$HOME/.android/build-cache"
+    - $HOME/android-sdk-dl
+    - $HOME/android-sdk
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.android/build-cache
 env:
-  global:
-    - ANDROID_API=28
-    - EMULATOR_API=28
-    - ANDROID_BUILD_TOOLS=28.0.3
-    - ADB_INSTALL_TIMEOUT=5
-android:
-  components:
-    - tools
-    - tools
-    - platform-tools
-    - build-tools-$ANDROID_BUILD_TOOLS
-    - android-$ANDROID_API
-    - extra
-    - extra-google-m2repository
-    - extra-android-m2repository
-  licenses:
-    - android-sdk-preview-license-.+
-    - android-sdk-license-.+
-    - google-gdk-license-.+
+  - ANDROID_HOME=$HOME/android-sdk
 before_install:
-  - openssl aes-256-cbc -K $encrypted_3f54ea8ff28e_key -iv $encrypted_3f54ea8ff28e_iv
-    -in nouekey-last.jks.enc -out nouekey-last.jks -d
-  - yes | sudo sdkmanager "platforms;android-28" "build-tools;28.0.3"
-  - yes | sudo sdkmanager --licenses
+  - openssl aes-256-cbc -K $encrypted_c9970bc0091f_key -iv $encrypted_c9970bc0091f_iv
+    -in sign-last.jks.enc -out sign-last.jks -d
+  - touch $HOME/.android/repositories.cfg
   - chmod +x gradlew
   - "./gradlew dependencies || true"
+install:
+  - if test ! -e $HOME/android-sdk-dl/sdk-tools.zip ; then curl https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip > $HOME/android-sdk-dl/sdk-tools.zip ; fi
+  - unzip -qq -n $HOME/android-sdk-dl/sdk-tools.zip -d $HOME/android-sdk
+  - echo y | $HOME/android-sdk/tools/bin/sdkmanager "tools" > /dev/null
+  - echo y | $HOME/android-sdk/tools/bin/sdkmanager "platform-tools" > /dev/null
+  - echo y | $HOME/android-sdk/tools/bin/sdkmanager "build-tools;28.0.3" > /dev/null
+  - echo y | $HOME/android-sdk/tools/bin/sdkmanager "platforms;android-28" > /dev/null
+  - echo y | $HOME/android-sdk/tools/bin/sdkmanager "extras;google;m2repository" > /dev/null
 before_script:
   - chmod +x gradlew
 script:
-  - "./gradlew clean assembleRelease"
+  - "./gradlew clean assembleRelease --no-daemon --parallel"
 deploy:
   provider: releases
   file_glob: true
-  file: /home/travis/build/eolme/NoueApp/app/build/outputs/apk/release/*
+  file: "/home/travis/build/eolme/NoueApp/app/build/outputs/apk/release/*"
   skip_cleanup: true
   overwrite: true
   on:
