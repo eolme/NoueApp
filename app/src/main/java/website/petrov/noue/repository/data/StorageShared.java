@@ -7,6 +7,7 @@ import android.content.SharedPreferences.Editor;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public final class StorageShared {
     @Nullable
     private static SharedPreferences mStorage;
     @Nullable
-    private static List<UpdateListener> mListeners;
+    private static List<WeakReference<UpdateListener>> mListeners;
 
     public static void initialize(@NonNull Application app) {
         mStorage = app.getSharedPreferences(Storage.SHARED_PREFERENCES, MODE_PRIVATE);
@@ -25,9 +26,11 @@ public final class StorageShared {
 
     private static void needUpdate() {
         if (mListeners != null) {
-            for (@Nullable UpdateListener listener : mListeners) {
-                if (listener != null) {
-                    listener.onStorageUpdate();
+            UpdateListener currentUpdateListener;
+            for (WeakReference<UpdateListener> listener : mListeners) {
+                currentUpdateListener = listener.get();
+                if (currentUpdateListener != null) {
+                    currentUpdateListener.onStorageUpdate();
                 }
             }
         }
@@ -80,17 +83,7 @@ public final class StorageShared {
             mListeners = new LinkedList<>();
         }
 
-        mListeners.add(handler);
-    }
-
-    public static void unregister(@Nullable UpdateListener handler) {
-        if (handler == null) {
-            return;
-        }
-
-        if (mListeners != null) {
-            mListeners.remove(handler);
-        }
+        mListeners.add(new WeakReference<>(handler));
     }
 
     @NonNull
@@ -133,6 +126,9 @@ public final class StorageShared {
     @Override
     protected void finalize() throws Throwable {
         if (mListeners != null) {
+            for (WeakReference<UpdateListener> listener : mListeners) {
+                listener.enqueue();
+            }
             mListeners.clear();
         }
         super.finalize();
