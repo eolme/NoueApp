@@ -3,7 +3,6 @@ package website.petrov.noue.view.activity;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -13,6 +12,8 @@ import androidx.annotation.IntegerRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -57,24 +58,21 @@ public final class LoginActivity extends BaseActivity {
     }
 
     private boolean mayRequestContacts() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+        if (ContextCompat.checkSelfPermission(this, GET_ACCOUNTS) == PackageManager.PERMISSION_GRANTED) {
             return true;
         }
-        if (checkSelfPermission(GET_ACCOUNTS) == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        }
-        if (shouldShowRequestPermissionRationale(GET_ACCOUNTS)) {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, GET_ACCOUNTS)) {
             new AlertDialog
                     .Builder(LoginActivity.this)
                     .setTitle(R.string.info)
                     .setMessage(R.string.permission_rationale_accounts)
                     .setPositiveButton(android.R.string.ok, (dialog, which) -> {
                         dialog.cancel();
-                        requestPermissions(new String[]{GET_ACCOUNTS}, Constants.REQUEST_GET_ACCOUNTS);
+                        ActivityCompat.requestPermissions(this, new String[]{GET_ACCOUNTS}, Constants.REQUEST_GET_ACCOUNTS);
                     })
                     .show();
         } else {
-            requestPermissions(new String[]{GET_ACCOUNTS}, Constants.REQUEST_GET_ACCOUNTS);
+            ActivityCompat.requestPermissions(this, new String[]{GET_ACCOUNTS}, Constants.REQUEST_GET_ACCOUNTS);
         }
         return false;
     }

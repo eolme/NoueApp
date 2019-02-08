@@ -7,12 +7,12 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
 import androidx.core.widget.ContentLoadingProgressBar;
 import androidx.fragment.app.Fragment;
 
 import website.petrov.noue.R;
 import website.petrov.noue.common.widget.FullscreenBindingRecyclerView;
-import website.petrov.noue.utilities.Provider;
 import website.petrov.noue.view.component.ProjectsAdapter;
 import website.petrov.noue.viewmodel.ProjectsViewModel;
 
@@ -33,8 +33,8 @@ public final class ProjectsFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View self = inflater.inflate(R.layout.fragment_projects, container, false);
         if (self != null) {
-            final FullscreenBindingRecyclerView recyclerView = Provider.getView(R.id.projects_list, self);
-            final ContentLoadingProgressBar bar = Provider.getView(R.id.projects_progress, self);
+            final FullscreenBindingRecyclerView recyclerView = ViewCompat.requireViewById(self, R.id.projects_list);
+            final ContentLoadingProgressBar bar = ViewCompat.requireViewById(self, R.id.projects_progress);
 
             recyclerView.setAdapter(adapter);
             viewModel.getData().observe(this, adapter::updateData);

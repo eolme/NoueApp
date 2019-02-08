@@ -7,12 +7,12 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
 import androidx.core.widget.ContentLoadingProgressBar;
 import androidx.fragment.app.Fragment;
 
 import website.petrov.noue.R;
 import website.petrov.noue.common.widget.FullscreenBindingRecyclerView;
-import website.petrov.noue.utilities.Provider;
 import website.petrov.noue.view.component.FeedAdapter;
 import website.petrov.noue.viewmodel.FeedViewModel;
 
@@ -33,8 +33,8 @@ public final class FeedFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View self = inflater.inflate(R.layout.fragment_feed, container, false);
         if (self != null) {
-            final FullscreenBindingRecyclerView recyclerView = Provider.getView(R.id.feed_list, self);
-            final ContentLoadingProgressBar bar = Provider.getView(R.id.feed_progress, self);
+            final FullscreenBindingRecyclerView recyclerView = ViewCompat.requireViewById(self, R.id.feed_list);
+            final ContentLoadingProgressBar bar = ViewCompat.requireViewById(self, R.id.feed_progress);
 
             recyclerView.setAdapter(adapter);
             viewModel.getData().observe(this, adapter::updateData);

@@ -3,6 +3,7 @@ package website.petrov.noue.view.activity;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 
 import website.petrov.noue.R;
 import website.petrov.noue.common.activity.BaseActivity;
@@ -14,8 +15,7 @@ public final class SettingsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
-        final Toolbar toolbar = Provider.getView(R.id.settings_toolbar, this);
+        final Toolbar toolbar = ActivityCompat.requireViewById(this, R.id.settings_toolbar);
         setSupportActionBar(toolbar);
         toolbar.setPaddingRelative(0, Provider.getStatusBarHeight(this), 0, 0);
 

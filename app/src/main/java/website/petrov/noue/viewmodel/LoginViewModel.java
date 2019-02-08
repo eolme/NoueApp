@@ -4,10 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
 
-import website.petrov.noue.common.viewmodel.BaseDynamicViewModel;
+import website.petrov.noue.common.viewmodel.BaseViewModel;
 import website.petrov.noue.model.LoginModel;
 
-public final class LoginViewModel extends BaseDynamicViewModel {
+public final class LoginViewModel extends BaseViewModel {
     @NonNull
     public MutableLiveData<String> email = new MutableLiveData<>();
     @Nullable
@@ -35,10 +35,5 @@ public final class LoginViewModel extends BaseDynamicViewModel {
 
     public boolean isEmail(@NonNull String string) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(string).matches();
-    }
-
-    @Override
-    protected void load() {
-
     }
 }

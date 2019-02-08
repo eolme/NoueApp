@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
@@ -16,7 +17,6 @@ import website.petrov.noue.common.activity.BaseApplicationActivity;
 import website.petrov.noue.databinding.ActivityMainBinding;
 import website.petrov.noue.repository.data.StorageShared;
 import website.petrov.noue.utilities.Constants;
-import website.petrov.noue.utilities.Provider;
 import website.petrov.noue.view.fragment.ErrorFragment;
 import website.petrov.noue.view.fragment.FeedFragment;
 import website.petrov.noue.view.fragment.ProjectsFragment;
@@ -159,8 +159,8 @@ public final class MainActivity extends BaseApplicationActivity implements Stora
 
     public void onStorageUpdate() {
         final View mHeader = binding.navView.getHeaderView(0);
-        final TextView mAccountAbout = Provider.getView(R.id.account_about, mHeader);
-        final TextView mAccountName = Provider.getView(R.id.account_name, mHeader);
+        final TextView mAccountAbout = ViewCompat.requireViewById(mHeader, R.id.account_about);
+        final TextView mAccountName = ViewCompat.requireViewById(mHeader, R.id.account_name);
 
         final String name = StorageShared.getAccountName();
         if (name.equals(Constants.Storage.STORAGE_ACCOUNT_NAME_DEFAULT)) {

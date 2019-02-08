@@ -14,57 +14,14 @@ import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.DimenRes;
 import androidx.annotation.Dimension;
-import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.Px;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import org.jetbrains.annotations.Contract;
 
 public final class Provider {
-    /**
-     * Finds the first descendant view with the given ID, the view itself if the ID matches
-     * {@link View#getId()}, or throws an IllegalArgumentException if the ID is invalid or there
-     * is no matching view in the hierarchy.
-     *
-     * @param id the ID to search for
-     * @return a view with given ID
-     * @see View#requireViewById(int)
-     */
-    @NonNull
-    public static <V extends View> V getView(@IdRes int id, @NonNull View where)
-            throws IllegalArgumentException {
-        final V view = where.findViewById(id);
-
-        if (view == null) {
-            throw new IllegalArgumentException("ID does not reference a View inside this View");
-        }
-
-        return view;
-    }
-
-    /**
-     * Finds the first descendant view with the given ID, or throws an IllegalArgumentException
-     * if the ID is invalid, or there is no matching view in the hierarchy.
-     *
-     * @param id the ID to search for
-     * @return a view with given ID
-     * @see Activity#requireViewById(int)
-     */
-    @NonNull
-    public static <V extends View> V getView(@IdRes int id, @NonNull Activity where)
-            throws IllegalArgumentException {
-        final V view = where.findViewById(id);
-
-        if (view == null) {
-            throw new IllegalArgumentException("ID does not reference a View inside Activity's layout");
-        }
-
-        return view;
-    }
-
-
     /**
      * @param context the context
      * @return StatusBar's height in px
@@ -137,15 +94,16 @@ public final class Provider {
     }
 
     public static void clearFocus(@NonNull View view) {
-        final AppCompatActivity context = getCompatActivity(view.getContext());
+        final Activity context = getActivity(view.getContext());
+
         if (context == null) {
-            throw new IllegalArgumentException("Context of View must be a AppCompatActivity");
+            throw new IllegalArgumentException("Context of View must be a Activity");
         }
 
         view.clearFocus();
 
         final InputMethodManager manager =
-                (InputMethodManager) context.getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE);
+                ActivityCompat.getSystemService(context, InputMethodManager.class);
         if (manager == null) {
             return; // Hardware keyboard
         }
@@ -168,18 +126,6 @@ public final class Provider {
         if (context instanceof ContextWrapper)
             return getActivity(((ContextWrapper) context).getBaseContext());
         return null;
-    }
-
-    /**
-     * {@see {@link Provider#getActivity(Context)}}
-     *
-     * @param context The context.
-     * @return An AppCompatActivity or null.
-     */
-    @Contract("null -> null")
-    @Nullable
-    public static AppCompatActivity getCompatActivity(@Nullable Context context) {
-        return (AppCompatActivity) getActivity(context);
     }
 
     @SuppressLint("HardwareIds")
