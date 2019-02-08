@@ -33,7 +33,7 @@ public final class Provider {
      * @see View#requireViewById(int)
      */
     @NonNull
-    public static <V extends View, W extends View> V getView(@IdRes int id, @NonNull W where)
+    public static <V extends View> V getView(@IdRes int id, @NonNull View where)
             throws IllegalArgumentException {
         final V view = where.findViewById(id);
 
@@ -53,7 +53,7 @@ public final class Provider {
      * @see Activity#requireViewById(int)
      */
     @NonNull
-    public static <V extends View, W extends Activity> V getView(@IdRes int id, @NonNull W where)
+    public static <V extends View> V getView(@IdRes int id, @NonNull Activity where)
             throws IllegalArgumentException {
         final V view = where.findViewById(id);
 
@@ -136,7 +136,7 @@ public final class Provider {
         return px / (context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
     }
 
-    public static <V extends View> void clearFocus(@NonNull V view) {
+    public static void clearFocus(@NonNull View view) {
         final AppCompatActivity context = getCompatActivity(view.getContext());
         if (context == null) {
             throw new IllegalArgumentException("Context of View must be a AppCompatActivity");
