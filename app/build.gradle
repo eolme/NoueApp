@@ -40,7 +40,7 @@ android {
     buildToolsVersion = '28.0.3'
 
     if (isRunningOnTravis) {
-        signingConfigs.release.storeFile = file("../nouekey-last.jks")
+        signingConfigs.release.storeFile = file("../sign-last.jks")
         signingConfigs.release.storePassword = System.getenv("keystore_password")
         signingConfigs.release.keyAlias = System.getenv("keystore_alias")
         signingConfigs.release.keyPassword = System.getenv("keystore_alias_password")

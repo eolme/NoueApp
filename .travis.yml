@@ -34,7 +34,7 @@ android:
     - google-gdk-license-.+
 before_install:
   - openssl aes-256-cbc -K $encrypted_3f54ea8ff28e_key -iv $encrypted_3f54ea8ff28e_iv
-    -in "nouekey-last.jks.enc" -out "nouekey-last.jks" -d
+    -in "sign-last.jks.enc" -out "sign-last.jks" -d
   - yes | sudo sdkmanager "platforms;android-28" "build-tools;28.0.3"
   - yes | sudo sdkmanager --licenses
   - chmod +x gradlew
