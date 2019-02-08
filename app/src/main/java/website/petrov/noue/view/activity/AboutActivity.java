@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import website.petrov.noue.R;
 
@@ -30,7 +32,7 @@ public final class AboutActivity extends AppCompatActivity {
     }
 
     public void openAppStore(@NonNull View view) {
-        Toast.makeText(this, getString(R.string.soon), Toast.LENGTH_SHORT).show();
+        Snackbar.make(view.getRootView(), getString(R.string.soon), Snackbar.LENGTH_SHORT).show();
     }
 
     public void openWeb(@NonNull View view) {
