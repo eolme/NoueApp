@@ -54,7 +54,7 @@ public abstract class BaseApplicationActivity extends BaseActivity {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
-        this.startActivity(intent);
+        startActivity(intent);
     }
 
     @Override

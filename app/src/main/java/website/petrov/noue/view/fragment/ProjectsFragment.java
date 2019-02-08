@@ -31,7 +31,7 @@ public final class ProjectsFragment extends Fragment {
     @Nullable
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View self = inflater.inflate(R.layout.fragment_projects, container, false);
+        final View self = inflater.inflate(R.layout.fragment_projects, container, false);
         if (self != null) {
             final FullscreenBindingRecyclerView recyclerView = ViewCompat.requireViewById(self, R.id.projects_list);
             final ContentLoadingProgressBar bar = ViewCompat.requireViewById(self, R.id.projects_progress);

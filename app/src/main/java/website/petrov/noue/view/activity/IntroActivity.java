@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 
 import website.petrov.noue.R;
@@ -16,7 +18,8 @@ import website.petrov.noue.view.component.SlideAdapter;
 import website.petrov.noue.viewmodel.IntroViewModel;
 import website.petrov.noue.viewmodel.SlideViewModel;
 
-public final class IntroActivity extends BaseApplicationActivity {
+public final class IntroActivity extends BaseApplicationActivity
+        implements ActivityCompat.OnRequestPermissionsResultCallback {
     private ActivityIntroBinding binding;
 
     @Override
@@ -52,7 +55,7 @@ public final class IntroActivity extends BaseApplicationActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == Constants.REQUEST_SUCCESS_LOGIN) {
-            StorageShared.setFirstRunFlag(resultCode != RESULT_OK);
+            StorageShared.setFirstRunFlag(resultCode != AppCompatActivity.RESULT_OK);
             finish();
         } else {
             super.onActivityResult(requestCode, resultCode, data);
