@@ -31,8 +31,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility LATEST_SUPPORT
-        targetCompatibility LATEST_SUPPORT
+        sourceCompatibility '1.8'
+        targetCompatibility '1.8'
     }
     dataBinding {
         enabled = true
