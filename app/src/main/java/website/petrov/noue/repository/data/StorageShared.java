@@ -38,8 +38,7 @@ public final class StorageShared {
         if (mStorage == null) {
             return Storage.STORAGE_ACCOUNT_NAME_DEFAULT;
         }
-        final String storageString = mStorage.getString(Storage.STORAGE_ACCOUNT_NAME, Storage.STORAGE_ACCOUNT_NAME_DEFAULT);
-        return storageString != null ? storageString : Storage.STORAGE_ACCOUNT_NAME_DEFAULT;
+        return mStorage.getString(Storage.STORAGE_ACCOUNT_NAME, Storage.STORAGE_ACCOUNT_NAME_DEFAULT);
     }
 
     public static void setAccountName(@NonNull String name) {
@@ -58,8 +57,7 @@ public final class StorageShared {
         if (mStorage == null) {
             return Storage.STORAGE_ACCOUNT_NAME_DEFAULT;
         }
-        final String storageString = mStorage.getString(Storage.STORAGE_ACCOUNT_ABOUT, Storage.STORAGE_ACCOUNT_ABOUT_DEFAULT);
-        return storageString != null ? storageString : Storage.STORAGE_ACCOUNT_ABOUT_DEFAULT;
+        return mStorage.getString(Storage.STORAGE_ACCOUNT_ABOUT, Storage.STORAGE_ACCOUNT_ABOUT_DEFAULT);
     }
 
     public static void setAccountAbout(@NonNull String name) {
@@ -100,8 +98,7 @@ public final class StorageShared {
         if (mStorage == null) {
             return Storage.STORAGE_ACCOUNT_NAME_DEFAULT;
         }
-        final String storageString = mStorage.getString(Storage.STORAGE_ACCOUNT_EMAIL, Storage.STORAGE_ACCOUNT_EMAIL_DEFAULT);
-        return storageString != null ? storageString : Storage.STORAGE_ACCOUNT_EMAIL_DEFAULT;
+        return mStorage.getString(Storage.STORAGE_ACCOUNT_EMAIL, Storage.STORAGE_ACCOUNT_EMAIL_DEFAULT);
     }
 
     public static void setAccountEmail(@NonNull String name) {
