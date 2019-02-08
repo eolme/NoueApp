@@ -66,18 +66,18 @@ public final class StorageRepository {
     }
 
     public void insertFeedModel(@NonNull FeedModel row) {
-        new insertAsyncTask<>(mFeedDao).execute(row);
+        new InsertAsyncTask<>(mFeedDao).execute(row);
     }
 
     public void insertProjectModel(@NonNull ProjectItemModel row) {
-        new insertAsyncTask<>(mProjectDao).execute(row);
+        new InsertAsyncTask<>(mProjectDao).execute(row);
     }
 
-    private static class insertAsyncTask<M extends Model, D extends GenericDao<M>> extends AsyncTask<M, Void, Void> {
+    private static class InsertAsyncTask<M extends Model, D extends GenericDao<M>> extends AsyncTask<M, Void, Void> {
         @NonNull
         private D mAsyncTaskDao;
 
-        insertAsyncTask(@NonNull D dao) {
+        InsertAsyncTask(@NonNull D dao) {
             mAsyncTaskDao = dao;
         }
 
