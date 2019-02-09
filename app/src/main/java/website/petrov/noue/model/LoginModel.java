@@ -6,8 +6,10 @@ import androidx.annotation.Nullable;
 import org.jetbrains.annotations.Contract;
 
 import website.petrov.noue.common.model.Model;
+import website.petrov.noue.utilities.Provider;
 
 public final class LoginModel implements Model {
+    @NonNull
     private final String email;
 
     public LoginModel(@NonNull String email) {
@@ -32,12 +34,13 @@ public final class LoginModel implements Model {
         return 17 ^ email.hashCode();
     }
 
+    @NonNull
     @Contract(pure = true)
     public String getEmail() {
         return email;
     }
 
     public boolean isValid() {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        return Provider.isEmail(email);
     }
 }

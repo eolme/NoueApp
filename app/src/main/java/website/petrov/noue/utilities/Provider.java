@@ -133,5 +133,10 @@ public final class Provider {
         return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
+    @Contract("null -> false")
+    public static boolean isEmail(@Nullable String email) {
+        return email != null && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
     private Provider() {} // hide constructor
 }

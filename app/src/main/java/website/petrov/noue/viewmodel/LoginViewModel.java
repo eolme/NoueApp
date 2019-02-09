@@ -1,5 +1,8 @@
 package website.petrov.noue.viewmodel;
 
+import android.text.TextUtils;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
@@ -21,19 +24,15 @@ public final class LoginViewModel extends BaseViewModel {
         return loginModel;
     }
 
-    public void onLoginClick() {
+    public void onLoginClick(@NonNull View view) {
         if (loginModel == null) {
             return;
         }
         final String value = email.getValue();
-        if (value == null || value.isEmpty()) {
+        if (TextUtils.isEmpty(value)) {
             return;
         }
-        LoginModel loginUser = new LoginModel(value);
+        final LoginModel loginUser = new LoginModel(value);
         loginModel.setValue(loginUser);
-    }
-
-    public boolean isEmail(@NonNull String string) {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(string).matches();
     }
 }

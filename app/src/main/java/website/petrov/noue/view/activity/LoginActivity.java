@@ -4,11 +4,11 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
-import androidx.annotation.IntegerRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -33,6 +33,7 @@ import static android.Manifest.permission.GET_ACCOUNTS;
 public final class LoginActivity extends BaseActivity {
     private LoginViewModel loginViewModel;
     private ActivityLoginBinding binding;
+    private static final int time = 400;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -98,7 +99,7 @@ public final class LoginActivity extends BaseActivity {
         String email;
         for (Account account : accounts) {
             email = account.name.toLowerCase(Locale.getDefault());
-            if (!emails.contains(email) && loginViewModel.isEmail(email)) {
+            if (!emails.contains(email) && Provider.isEmail(email)) {
                 emails.add(email);
             }
         }
@@ -113,9 +114,12 @@ public final class LoginActivity extends BaseActivity {
 
         binding.loginProgress.setAlpha(0);
         binding.loginProgress.setVisibility(View.VISIBLE);
-
-        @IntegerRes final int time = getResources().getInteger(android.R.integer.config_mediumAnimTime);
         binding.loginProgress.animate().setDuration(time).alpha(1).setListener(null);
+
+        // !!! ONLY FOR TEST !!!
+        new Handler().postDelayed(() -> {
+            
+        }, 2000);
     }
 }
 
