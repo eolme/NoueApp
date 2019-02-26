@@ -8,14 +8,12 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.MutableLiveData;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-
 import website.petrov.noue.BuildConfig;
 import website.petrov.noue.common.model.MessageResponse;
 import website.petrov.noue.common.viewmodel.BaseViewModel;

@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.lang.ref.WeakReference;
 
 import website.petrov.noue.R;
-import website.petrov.noue.common.widget.FullscreenBindingRecyclerView;
 import website.petrov.noue.view.component.FeedAdapter;
 import website.petrov.noue.viewmodel.FeedViewModel;
 

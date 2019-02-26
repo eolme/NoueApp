@@ -1,16 +1,10 @@
 package website.petrov.noue.view.activity;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-
-import com.google.android.material.snackbar.Snackbar;
 
 import website.petrov.noue.R;
 

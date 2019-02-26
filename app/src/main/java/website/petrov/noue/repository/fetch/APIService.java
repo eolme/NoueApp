@@ -1,9 +1,5 @@
 package website.petrov.noue.repository.fetch;
 
-import android.net.TrafficStats;
-
-import java.net.Socket;
-
 import javax.net.SocketFactory;
 
 import okhttp3.OkHttpClient;
