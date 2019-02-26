@@ -9,6 +9,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 public final class Constants {
+    public static final String API_URL = "https://petrov.website/api/noue/";
+
     public static final int FRAGMENT_CARD = 3143;
     public static final int FRAGMENT_FEED = 4333;
     public static final int FRAGMENT_DEFAULT = -1;

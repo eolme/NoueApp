@@ -1,6 +1,7 @@
 package website.petrov.noue;
 
 import android.app.Application;
+import android.net.TrafficStats;
 
 import website.petrov.noue.repository.data.StorageRepository;
 import website.petrov.noue.repository.data.StorageShared;

@@ -14,15 +14,6 @@
         android:layout_gravity="center"
         android:visibility="visible" />
 
-    <website.petrov.noue.common.widget.FloatButton
-        android:id="@+id/projects_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        app:rippleColor="@color/colorWhite"
-        app:srcCompat="@drawable/ic_add"
-        app:tint="@color/colorWhite" />
-
     <website.petrov.noue.common.widget.FullscreenBindingRecyclerView
         android:id="@+id/projects_list"
         android:layout_width="match_parent"

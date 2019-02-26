@@ -5,87 +5,48 @@
     tools:context="website.petrov.noue.view.activity.AboutActivity">
 
     <data>
-
         <variable
             name="build"
             type="website.petrov.noue.BuildConfig" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/activity_about"
+    <website.petrov.noue.common.widget.FullscreenLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:darkIcon="true">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/about_title"
-            style="@style/NoueTheme.About.Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.2" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/about_description"
-            style="@style/NoueTheme.About.Description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@{build.VERSION_NAME}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/about_title"
-            app:layout_constraintVertical_bias="0.0"
-            tools:text="1.0.0" />
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/about_external"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="start|center_vertical"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/about_description"
-            app:layout_constraintVertical_bias="0.4">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/about_external_web"
-                style="@style/NoueTheme.About.Button"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/about_title"
+                style="@style/NoueTheme.About.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:onClick="openWeb"
-                android:text="@string/about_web"
-                app:icon="@drawable/ic_web" />
+                android:text="@string/app_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.2" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/about_external_gp"
-                style="@style/NoueTheme.About.Button"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/about_description"
+                style="@style/NoueTheme.About.Description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:onClick="openGooglePlay"
-                android:text="@string/about_googleplay"
-                app:icon="@drawable/ic_googleplay" />
+                android:layout_marginTop="32dp"
+                android:text="@{build.VERSION_NAME}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/about_title"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="1.0.0" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/about_external_as"
-                style="@style/NoueTheme.About.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:onClick="openAppStore"
-                android:text="@string/about_appstore"
-                app:icon="@drawable/ic_applestore" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </website.petrov.noue.common.widget.FullscreenLayout>
 
 </layout>

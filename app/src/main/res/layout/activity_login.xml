@@ -18,33 +18,13 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <FrameLayout
-            android:layout_width="128dp"
-            android:layout_height="128dp">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/login_icon"
-                android:layout_width="256dp"
-                android:layout_height="256dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/app_name"
-                android:scaleType="fitXY"
-                app:srcCompat="@mipmap/ic_launcher_foreground" />
-
-        </FrameLayout>
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email_layout"
             style="@style/NoueTheme.Login.Input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="72dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             app:errorEnabled="true"
@@ -52,7 +32,7 @@
 
             <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                 android:id="@+id/email"
-                style="@style/Widget.AppCompat.AutoCompleteTextView"
+                style="NoueTheme.Text.Padding"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:ems="10"
@@ -62,8 +42,7 @@
                 android:imeOptions="actionDone|flagForceAscii"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
-                android:text="@={viewModel.email}"
-                android:theme="@style/NoueTheme.Text.Padding" />
+                android:text="@={viewModel.email}"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,8 +52,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:enabled="@={viewModel.isLoginAttempting}"
+            android:layout_marginBottom="8dp"
+            android:enabled="@{!viewModel.isLoginAttempting}"
             android:onClick="@{viewModel::onLoginClick}"
             android:text="@string/action_sign_in" />
 
@@ -84,9 +65,9 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="8dp"
             android:visibility="invisible" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

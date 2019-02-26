@@ -34,11 +34,6 @@ public final class MainActivity extends BaseApplicationActivity implements Stora
     protected void onApplicationVisible() {
         if (StorageShared.getFirstRunFlag()) {
             showIntro();
-            finish();
-        } else {
-            if (mCurrentFragmentType == Constants.FRAGMENT_DEFAULT) {
-                setCurrentFragmentType(Constants.FRAGMENT_CARD);
-            }
         }
     }
 
@@ -47,6 +42,10 @@ public final class MainActivity extends BaseApplicationActivity implements Stora
         super.onCreate(savedInstanceState);
 
         binding = DataBindingUtil.setContentView(MainActivity.this, R.layout.activity_main);
+
+        if (mCurrentFragmentType == Constants.FRAGMENT_DEFAULT) {
+            setCurrentFragmentType(Constants.FRAGMENT_CARD);
+        }
 
         binding.navView.setCheckedItem(R.id.menu_cards);
         binding.navView.setNavigationItemSelectedListener(

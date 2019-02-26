@@ -5,7 +5,7 @@
             <item android:bottom="@dimen/padding_item_y" android:gravity="center" android:left="@dimen/padding_item_x" android:right="@dimen/padding_item_x" android:top="@dimen/padding_item_y">
                 <shape android:shape="rectangle">
                     <corners android:radius="@dimen/corner_radius" />
-                    <solid android:color="@color/alternateDarkColor" />
+                    <solid android:color="@color/secondaryColor" />
                 </shape>
             </item>
         </layer-list>

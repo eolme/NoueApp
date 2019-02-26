@@ -5,7 +5,6 @@
     tools:context="website.petrov.noue.view.activity.IntroActivity">
 
     <data>
-
         <variable
             name="viewModel"
             type="website.petrov.noue.viewmodel.IntroViewModel" />

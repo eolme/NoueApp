@@ -19,10 +19,10 @@ public abstract class BaseApplicationActivity extends BaseActivity {
     @CallSuper
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
         mApplicationState = Constants.STATE_VISIBLE;
         onApplicationVisible();
-
-        super.onCreate(savedInstanceState);
     }
 
     @CallSuper

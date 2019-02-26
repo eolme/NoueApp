@@ -130,12 +130,6 @@
         <item name="colorControlHighlight">@color/transparent</item>
     </style>
 
-    <style name="NoueTheme.ToolBar">
-        <item name="android:background">@color/alternateColor</item>
-        <item name="android:color">@color/secondaryTextColor</item>
-        <item name="android:elevation">@dimen/toolbar_elevation</item>
-    </style>
-
     <style name="NoueTheme.AppAlertDialogContent">
         <item name="colorAccent">?attr/colorAccent</item>
     </style>
@@ -157,10 +151,8 @@
 
     <style name="NoueTheme.About" />
 
-    <style name="NoueTheme.About.Button" parent="Widget.MaterialComponents.Button.TextButton.Icon" />
-
     <style name="NoueTheme.About.Title" parent="TextAppearance.MaterialComponents.Headline1">
-        <item name="android:textColor">?attr/colorAccent</item>
+        <item name="android:textColor">@color/secondaryColor</item>
         <item name="android:textStyle">normal</item>
         <item name="fontFamily">sans-serif-medium</item>
     </style>

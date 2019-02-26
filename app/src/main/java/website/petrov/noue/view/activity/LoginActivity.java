@@ -4,7 +4,6 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -49,11 +48,16 @@ public final class LoginActivity extends BaseActivity {
             if (TextUtils.isEmpty(loginUser.getEmail())) {
                 binding.emailLayout.setError(getString(R.string.error_field_required));
                 binding.email.requestFocus();
-            } else if (!loginUser.isValid()) {
+            } else if (!loginUser.isValidEmail()) {
                 binding.emailLayout.setError(getString(R.string.error_invalid_email));
                 binding.email.requestFocus();
             } else {
-                attemptLogin();
+                binding.emailLayout.setError(null);
+                Provider.clearFocus(binding.email);
+                binding.loginProgress.setAlpha(0);
+                binding.loginProgress.setVisibility(View.VISIBLE);
+                binding.loginProgress.animate().setDuration(time).alpha(1);
+                loginViewModel.attemptLogin(this);
             }
         });
     }
@@ -106,20 +110,6 @@ public final class LoginActivity extends BaseActivity {
 
         binding.email.setAdapter(new ArrayAdapter<>(LoginActivity.this,
                 android.R.layout.simple_dropdown_item_1line, emails));
-    }
-
-    private void attemptLogin() {
-        binding.emailLayout.setError(null);
-        Provider.clearFocus(binding.email);
-
-        binding.loginProgress.setAlpha(0);
-        binding.loginProgress.setVisibility(View.VISIBLE);
-        binding.loginProgress.animate().setDuration(time).alpha(1).setListener(null);
-
-        // !!! ONLY FOR TEST !!!
-        new Handler().postDelayed(() -> {
-            
-        }, 2000);
     }
 }
 

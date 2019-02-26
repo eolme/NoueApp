@@ -10,6 +10,9 @@ import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
 import androidx.core.widget.ContentLoadingProgressBar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.lang.ref.WeakReference;
 
 import website.petrov.noue.R;
 import website.petrov.noue.common.widget.FullscreenBindingRecyclerView;
@@ -19,12 +22,10 @@ import website.petrov.noue.viewmodel.ProjectsViewModel;
 public final class ProjectsFragment extends Fragment {
     @NonNull
     private final ProjectsViewModel viewModel;
-    @NonNull
-    private final ProjectsAdapter adapter;
+    private WeakReference<RecyclerView> recyclerView;
 
     public ProjectsFragment() {
         viewModel = new ProjectsViewModel();
-        adapter = new ProjectsAdapter();
     }
 
     @Override
@@ -33,17 +34,33 @@ public final class ProjectsFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         final View self = inflater.inflate(R.layout.fragment_projects, container, false);
         if (self != null) {
-            final FullscreenBindingRecyclerView recyclerView = ViewCompat.requireViewById(self, R.id.projects_list);
+            final ProjectsAdapter adapter = new ProjectsAdapter();
             final ContentLoadingProgressBar bar = ViewCompat.requireViewById(self, R.id.projects_progress);
 
-            recyclerView.setAdapter(adapter);
+            recyclerView = new WeakReference<>(ViewCompat.requireViewById(self, R.id.projects_list));
+            recyclerView.get().setAdapter(adapter);
+
             viewModel.getData().observe(this, adapter::updateData);
 
             self.postDelayed(() -> {
                 bar.setVisibility(View.GONE);
-                recyclerView.setVisibility(View.VISIBLE);
+                recyclerView.get().setVisibility(View.VISIBLE);
             }, 2000);
         }
         return self;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        final RecyclerView recycler = recyclerView.get();
+        if (recycler != null) {
+            if (recycler.getAdapter() != null) {
+                recycler.setAdapter(null);
+            }
+        }
+
+        recyclerView.enqueue();
     }
 }

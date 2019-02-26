@@ -39,8 +39,7 @@ public final class StorageRepository {
         mProjectDao = db.projectDao();
     }
 
-    @Contract(pure = true)
-    @Nullable
+    @Contract(value = "-> !null", pure = true)
     public static StorageRepository getInstance() {
         return mRepo;
     }
