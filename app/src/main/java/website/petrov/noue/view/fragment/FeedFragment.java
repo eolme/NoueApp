@@ -54,10 +54,8 @@ public final class FeedFragment extends Fragment {
         super.onDestroyView();
 
         final RecyclerView recycler = recyclerView.get();
-        if (recycler != null) {
-            if (recycler.getAdapter() != null) {
-                recycler.setAdapter(null);
-            }
+        if (recycler != null && recycler.getAdapter() != null) {
+            recycler.setAdapter(null);
         }
 
         recyclerView.enqueue();
