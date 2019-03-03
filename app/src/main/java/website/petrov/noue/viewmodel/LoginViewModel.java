@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.google.gson.internal.LinkedTreeMap;
+
 import java.util.Objects;
 
 import io.reactivex.Observable;
@@ -76,11 +78,12 @@ public final class LoginViewModel extends ViewModel {
 
                     if (loginResponse.result != null) {
                         Log.d("LOGIN-OK", loginResponse.result.toString());
+                        Log.d("RESULT", loginResponse.result.getClass().toString());
 
-                        final UserModel user = (UserModel) loginResponse.result;
-                        StorageShared.setAccountName(user.getName());
-                        StorageShared.setAccountAbout(user.getAbout());
-                        StorageShared.setAccountEmail(user.getEmail());
+                        final LinkedTreeMap<?, ?> result = (LinkedTreeMap<?, ?>) loginResponse.result;
+                        StorageShared.setAccountName((String) result.get("name"));
+                        StorageShared.setAccountAbout((String) result.get("about"));
+                        StorageShared.setAccountEmail((String) result.get("name"));
 
                         activity.setResult(Activity.RESULT_OK);
                     } else {

@@ -45,8 +45,8 @@ public final class StorageShared {
         return mStorage.getString(Storage.STORAGE_ACCOUNT_NAME, Storage.STORAGE_ACCOUNT_NAME_DEFAULT);
     }
 
-    public static void setAccountName(@NonNull String name) {
-        if (mStorage == null) {
+    public static void setAccountName(@Nullable String name) {
+        if (name == null || mStorage == null) {
             return;
         }
         final Editor editor = mStorage.edit();
@@ -64,12 +64,12 @@ public final class StorageShared {
         return mStorage.getString(Storage.STORAGE_ACCOUNT_ABOUT, Storage.STORAGE_ACCOUNT_ABOUT_DEFAULT);
     }
 
-    public static void setAccountAbout(@NonNull String name) {
-        if (mStorage == null) {
+    public static void setAccountAbout(@Nullable String about) {
+        if (about == null || mStorage == null) {
             return;
         }
         final Editor editor = mStorage.edit();
-        editor.putString(Storage.STORAGE_ACCOUNT_ABOUT, name);
+        editor.putString(Storage.STORAGE_ACCOUNT_ABOUT, about);
         editor.apply();
 
         needUpdate();
@@ -95,12 +95,12 @@ public final class StorageShared {
         return mStorage.getString(Storage.STORAGE_ACCOUNT_EMAIL, Storage.STORAGE_ACCOUNT_EMAIL_DEFAULT);
     }
 
-    public static void setAccountEmail(@NonNull String name) {
-        if (mStorage == null) {
+    public static void setAccountEmail(@Nullable String email) {
+        if (email == null || mStorage == null) {
             return;
         }
         final Editor editor = mStorage.edit();
-        editor.putString(Storage.STORAGE_ACCOUNT_EMAIL, name);
+        editor.putString(Storage.STORAGE_ACCOUNT_EMAIL, email);
         editor.apply();
 
         needUpdate();
