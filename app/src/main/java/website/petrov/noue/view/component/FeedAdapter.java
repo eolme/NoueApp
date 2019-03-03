@@ -2,6 +2,8 @@ package website.petrov.noue.view.component;
 
 import androidx.annotation.NonNull;
 
+import org.jetbrains.annotations.Contract;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +23,7 @@ public final class FeedAdapter
         data = new ArrayList<>();
     }
 
+    @Contract(pure = true)
     @NonNull
     @Override
     protected Object getValueForPosition(int position) {

@@ -9,7 +9,8 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import website.petrov.noue.common.component.SafeSocketFactory;
-import website.petrov.noue.utilities.Constants;
+
+import static website.petrov.noue.utilities.Constants.API.BASE_URL;
 
 public class APIService {
     private static volatile Retrofit sInstance;
@@ -28,7 +29,7 @@ public class APIService {
 
                     sInstance = new Retrofit.Builder()
                             .client(client)
-                            .baseUrl(Constants.API_URL)
+                            .baseUrl(BASE_URL)
                             .addConverterFactory(GsonConverterFactory.create())
                             .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
                             .build();

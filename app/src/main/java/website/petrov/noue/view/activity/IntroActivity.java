@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 
 import website.petrov.noue.R;
 import website.petrov.noue.common.activity.BaseApplicationActivity;
@@ -33,12 +34,10 @@ public final class IntroActivity extends BaseApplicationActivity
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final SlideViewModel slideViewModel = new SlideViewModel(getApplication());
-
         binding = DataBindingUtil.setContentView(IntroActivity.this, R.layout.activity_intro);
         binding.setLifecycleOwner(this);
-        binding.setViewModel(new IntroViewModel());
-        binding.introViewpager.setAdapter(new SlideAdapter(getSupportFragmentManager(), slideViewModel.getData()));
+        binding.setViewModel(ViewModelProviders.of(this).get(IntroViewModel.class));
+        binding.introViewpager.setAdapter(new SlideAdapter(getSupportFragmentManager(), new SlideViewModel(getApplication()).getData()));
         binding.introViewpager.setPageTransformer(false, new FadePageTransformer());
     }
 

@@ -1,4 +1,4 @@
-package website.petrov.noue.repository.fetch.login;
+package website.petrov.noue.repository.fetch.api;
 
 import androidx.annotation.NonNull;
 
@@ -9,6 +9,6 @@ import website.petrov.noue.common.json.rpc.Request;
 import website.petrov.noue.common.json.rpc.Response;
 
 public interface LoginAPI {
-    @POST("login")
+    @POST("./")
     Observable<Response> attempt(@Body @NonNull Request json);
 }

@@ -1,8 +1,6 @@
 package website.petrov.noue.common.viewmodel;
 
-import android.app.Application;
-
-import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModel;
 
 import org.jetbrains.annotations.Contract;
 
@@ -11,12 +9,10 @@ import java.util.List;
 
 import website.petrov.noue.common.model.Model;
 
-public abstract class GenericAndroidViewModel<M extends Model> extends BaseAndroidViewModel {
-    protected List<M> models;
+public abstract class BaseGenericViewModel<M extends Model> extends ViewModel
+        implements DynamicViewModel {
 
-    public GenericAndroidViewModel(@NonNull Application application) {
-        super(application);
-    }
+    private List<M> models;
 
     @Contract("-> !null")
     public List<M> getData() {

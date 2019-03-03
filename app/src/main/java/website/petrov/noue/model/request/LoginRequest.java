@@ -1,4 +1,4 @@
-package website.petrov.noue.model;
+package website.petrov.noue.model.request;
 
 import androidx.annotation.NonNull;
 

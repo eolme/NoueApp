@@ -22,12 +22,14 @@ import io.reactivex.schedulers.Schedulers;
 import website.petrov.noue.common.json.rpc.Request;
 import website.petrov.noue.common.json.rpc.RequestBuilder;
 import website.petrov.noue.common.json.rpc.Response;
-import website.petrov.noue.model.LoginRequest;
 import website.petrov.noue.model.UserModel;
+import website.petrov.noue.model.request.LoginRequest;
 import website.petrov.noue.repository.data.StorageShared;
 import website.petrov.noue.repository.fetch.APIService;
-import website.petrov.noue.repository.fetch.login.LoginAPI;
+import website.petrov.noue.repository.fetch.api.LoginAPI;
 import website.petrov.noue.utilities.Provider;
+
+import static website.petrov.noue.utilities.Constants.API.METHOD_LOGIN;
 
 public final class LoginViewModel extends ViewModel {
     public MutableLiveData<String> email = new MutableLiveData<>();
@@ -56,11 +58,13 @@ public final class LoginViewModel extends ViewModel {
         loginModel.setValue(loginUser);
     }
 
+    @SuppressWarnings("unchecked")
     public void attemptLogin(@NonNull Context context) {
         isLoginAttempting = true;
 
         final LoginAPI api = APIService.getInstance().create(LoginAPI.class);
         final Request request = new RequestBuilder()
+                .withMethod(METHOD_LOGIN)
                 .withParams(new Object[]{
                         new LoginRequest(Provider.getDeviceId(context),
                                 StorageShared.getInstanceId(),
@@ -80,10 +84,12 @@ public final class LoginViewModel extends ViewModel {
                         Log.d("LOGIN-OK", loginResponse.result.toString());
                         Log.d("RESULT", loginResponse.result.getClass().toString());
 
-                        final LinkedTreeMap<?, ?> result = (LinkedTreeMap<?, ?>) loginResponse.result;
-                        StorageShared.setAccountName((String) result.get("name"));
-                        StorageShared.setAccountAbout((String) result.get("about"));
-                        StorageShared.setAccountEmail((String) result.get("name"));
+                        if (loginResponse.result instanceof LinkedTreeMap) {
+                            final LinkedTreeMap<Object, Object> result = (LinkedTreeMap<Object, Object>) loginResponse.result;
+                            StorageShared.setAccountName((String) result.get("name"));
+                            StorageShared.setAccountAbout((String) result.get("about"));
+                            StorageShared.setAccountEmail((String) result.get("name"));
+                        }
 
                         activity.setResult(Activity.RESULT_OK);
                     } else {
@@ -109,6 +115,8 @@ public final class LoginViewModel extends ViewModel {
 
     @Override
     protected void onCleared() {
-        subscription.dispose();
+        if (subscription != null) {
+            subscription.dispose();
+        }
     }
 }

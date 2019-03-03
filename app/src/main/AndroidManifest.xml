@@ -24,6 +24,7 @@
         android:name="website.petrov.noue.App"
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_descriptor"
+        android:networkSecurityConfig="@xml/network"
         android:hardwareAccelerated="true"
         android:extractNativeLibs="false"
         android:icon="@mipmap/ic_launcher"

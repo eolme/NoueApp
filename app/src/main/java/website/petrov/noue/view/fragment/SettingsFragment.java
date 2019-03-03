@@ -3,7 +3,6 @@ package website.petrov.noue.view.fragment;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -25,7 +24,6 @@ import website.petrov.noue.utilities.Provider;
 
 public final class SettingsFragment extends PreferenceFragmentCompat
         implements SharedPreferences.OnSharedPreferenceChangeListener {
-    private static final String KEY = "%s";
 
     @Override
     public void onCreatePreferences(@Nullable Bundle bundle, @Nullable String s) {
@@ -53,15 +51,16 @@ public final class SettingsFragment extends PreferenceFragmentCompat
         super.onResume();
 
         updatePrefenceSummary();
+    }
 
+    @Override
+    protected void onBindPreferences() {
         getPreferenceScreen().getSharedPreferences()
                 .registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-
+    protected void onUnbindPreferences() {
         getPreferenceScreen().getSharedPreferences()
                 .unregisterOnSharedPreferenceChangeListener(this);
     }
@@ -69,7 +68,7 @@ public final class SettingsFragment extends PreferenceFragmentCompat
     @Override
     public void onSharedPreferenceChanged(@NonNull SharedPreferences sharedPreferences, @NonNull String key) {
         final Preference pref = findPreference(key);
-        if (TextUtils.equals(pref.getSummary(), KEY) && pref instanceof EditTextPreference) {
+        if (pref instanceof EditTextPreference) {
             pref.setSummary(((EditTextPreference) pref).getText());
         }
     }
@@ -93,7 +92,7 @@ public final class SettingsFragment extends PreferenceFragmentCompat
     private void updatePrefenceSummary() {
         final ArrayList<Preference> list = getPreferenceList(getPreferenceScreen(), new ArrayList<>());
         for (Preference pref : list) {
-            if (TextUtils.equals(pref.getSummary(), KEY) && pref instanceof EditTextPreference) {
+            if (pref instanceof EditTextPreference) {
                 pref.setSummary(((EditTextPreference) pref).getText());
             }
         }

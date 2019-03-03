@@ -1,5 +1,6 @@
 package website.petrov.noue.view.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
 import androidx.core.widget.ContentLoadingProgressBar;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.lang.ref.WeakReference;
@@ -19,12 +21,14 @@ import website.petrov.noue.view.component.FeedAdapter;
 import website.petrov.noue.viewmodel.FeedViewModel;
 
 public final class FeedFragment extends Fragment {
-    @NonNull
-    private final FeedViewModel viewModel;
+    private FeedViewModel viewModel;
     private WeakReference<RecyclerView> recyclerView;
 
-    public FeedFragment() {
-        viewModel = new FeedViewModel();
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        viewModel = ViewModelProviders.of(this).get(FeedViewModel.class);
     }
 
     @Override

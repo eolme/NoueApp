@@ -9,8 +9,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 public final class Constants {
-    public static final String API_URL = "https://petrov.website/api/noue/";
-
     public static final int FRAGMENT_CARD = 3143;
     public static final int FRAGMENT_FEED = 4333;
     public static final int FRAGMENT_DEFAULT = -1;
@@ -56,6 +54,14 @@ public final class Constants {
         public static final String STORAGE_INSTANCE_ID = "storage_instance_id";
 
         private Storage() {} // hide constructor
+    }
+
+    public static final class API {
+        public static final String BASE_URL = "https://petrov.website/api/";
+
+        public static final String METHOD_LOGIN = "noue.login";
+        public static final String METHOD_FEED = "noue.feed";
+        public static final String METHOD_PROJECTS = "noue.projects";
     }
 
     public static final class Debug {
