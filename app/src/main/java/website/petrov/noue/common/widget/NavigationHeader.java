@@ -11,27 +11,34 @@ import androidx.core.view.GravityCompat;
 
 import org.jetbrains.annotations.Contract;
 
+import website.petrov.noue.utilities.Provider;
+
 /**
  * A LinearLayout, which ignores any padding around children.
  * To fix glitch, gravity is additionally reset.
  */
-public final class ForceClipLayout extends LinearLayoutCompat {
-    public ForceClipLayout(@NonNull Context context) {
+public final class NavigationHeader extends LinearLayoutCompat {
+    public NavigationHeader(@NonNull Context context) {
         this(context, null);
     }
 
-    public ForceClipLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public NavigationHeader(@NonNull Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ForceClipLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public NavigationHeader(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        forceClip();
+        forceClip(context);
     }
 
-    private void forceClip() {
+    private void forceClip(@NonNull Context context) {
         super.setClipChildren(true);
         super.setClipToPadding(true);
+
+        if (getFitsSystemWindows()) {
+            super.setPadding(getPaddingLeft(), Provider.getStatusBarHeight(context),
+                    getPaddingRight(), getPaddingBottom());
+        }
 
         switch (getOrientation()) {
             case VERTICAL:
