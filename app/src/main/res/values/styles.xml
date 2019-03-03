@@ -3,6 +3,8 @@
 
     <style name="AppCompatAlertDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
         <item name="colorAccent">@color/secondaryColor</item>
+        <item name="colorSecondary">@color/secondaryColor</item>
+        <item name="colorPrimary">@color/secondaryColor</item>
     </style>
 
     <style name="Base.NoueTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -10,8 +12,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
-        <!-- Preference -->
-        <item name="preferenceTheme">@style/NoueTheme.AppPreference.Theme</item>
+        <!-- Dialog -->
         <item name="alertDialogTheme">@style/AppCompatAlertDialog</item>
 
         <!-- Scrollbar -->
@@ -133,21 +134,6 @@
     <style name="NoueTheme.AppAlertDialogContent">
         <item name="colorAccent">?attr/colorAccent</item>
     </style>
-
-    <style name="NoueTheme.AppPreference" />
-
-    <style name="NoueTheme.AppPreference.DialogPreference">
-        <item name="positiveButtonText">@android:string/ok</item>
-        <item name="negativeButtonText">@android:string/cancel</item>
-    </style>
-
-    <style name="NoueTheme.AppPreference.Theme" parent="@style/PreferenceThemeOverlay">
-        <item name="preferenceFragmentCompatStyle">
-            @style/NoueTheme.AppPreference.FragmentCompatStyle
-        </item>
-    </style>
-
-    <style name="NoueTheme.AppPreference.FragmentCompatStyle" parent="@style/PreferenceFragment.Material" />
 
     <style name="NoueTheme.About" />
 

@@ -1,70 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="@string/preference_general">
+    <androidx.preference.PreferenceCategory android:title="@string/preference_general">
 
-        <SwitchPreference
+        <androidx.preference.SwitchPreference
             android:defaultValue="false"
             android:key="preference_mute"
             android:summaryOff="@string/preference_mute_off"
             android:summaryOn="@string/preference_mute_on"
             android:title="@string/preference_mute" />
 
-        <CheckBoxPreference
+        <androidx.preference.CheckBoxPreference
             android:defaultValue="true"
             android:key="preference_default_templates"
             android:summary="@string/preference_default_templates_summary"
             android:title="@string/preference_default_templates" />
 
-    </PreferenceCategory>
+    </androidx.preference.PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/preference_notification">
+    <androidx.preference.PreferenceCategory android:title="@string/preference_notification">
 
-        <SwitchPreference
+        <androidx.preference.SwitchPreference
             android:defaultValue="true"
             android:key="preference_assigned"
             android:title="@string/preference_assigned" />
 
-        <SwitchPreference
+        <androidx.preference.SwitchPreference
             android:defaultValue="true"
             android:key="preference_reported"
             android:title="@string/preference_reported" />
 
-        <SwitchPreference
+        <androidx.preference.SwitchPreference
             android:defaultValue="true"
             android:key="preference_watching"
             android:title="@string/preference_watching" />
 
-    </PreferenceCategory>
+    </androidx.preference.PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/preference_templates">
+    <androidx.preference.PreferenceCategory android:title="@string/preference_templates">
 
-        <EditTextPreference
+        <androidx.preference.EditTextPreference
             android:defaultValue="[BUG]"
             android:dialogMessage="@string/preference_template_message"
             android:key="preference_template_bug"
-            android:summary="[BUG]"
+            android:summary="%s"
             android:title="@string/preference_template_bug" />
 
-        <EditTextPreference
+        <androidx.preference.EditTextPreference
             android:defaultValue="[ENH]"
             android:dialogMessage="@string/preference_template_message"
             android:key="preference_template_enhancement"
-            android:summary="[ENH]"
+            android:summary="%s"
             android:title="@string/preference_template_enhancement" />
 
-        <EditTextPreference
+        <androidx.preference.EditTextPreference
             android:defaultValue="[SUG]"
             android:dialogMessage="@string/preference_template_message"
             android:key="preference_template_suggest"
-            android:summary="[SUG]"
+            android:summary="%s"
             android:title="@string/preference_template_suggest" />
 
-    </PreferenceCategory>
+    </androidx.preference.PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/preference_other">
+    <androidx.preference.PreferenceCategory android:title="@string/preference_other">
 
-        <Preference
+        <androidx.preference.Preference
             android:key="preference_dummy"
             android:summary=""
             android:title="@string/preference_about_app">
@@ -73,8 +73,8 @@
                 android:targetClass="website.petrov.noue.view.activity.AboutActivity"
                 android:targetPackage="website.petrov.noue" />
 
-        </Preference>
+        </androidx.preference.Preference>
 
-    </PreferenceCategory>
+    </androidx.preference.PreferenceCategory>
 
-</PreferenceScreen>
+</androidx.preference.PreferenceScreen>
