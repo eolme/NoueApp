@@ -1,6 +1,5 @@
 package website.petrov.noue.utilities;
 
-import com.facebook.stetho.Stetho;
 import com.squareup.leakcanary.LeakCanary;
 import androidx.annotation.NonNull;
 import android.app.Application;
@@ -13,7 +12,6 @@ public final class DebugUtil {
             return;
         }
         LeakCanary.install(app);
-        Stetho.initializeWithDefaults(app);
 
         // See: https://issuetracker.google.com/issues/36951662
         new Handler().postAtFrontOfQueue(() -> {
