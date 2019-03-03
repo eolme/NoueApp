@@ -48,7 +48,7 @@ public final class IntroActivity extends BaseApplicationActivity
         if (current == 0) {
             dispatchBackPressed();
         } else {
-            binding.introViewpager.setCurrentItem(current - 1);
+            binding.introViewpager.setCurrentItem(current - 1, true);
         }
     }
 
