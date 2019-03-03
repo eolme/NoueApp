@@ -10,17 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.Objects;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import website.petrov.noue.BuildConfig;
-import website.petrov.noue.common.model.MessageResponse;
+import website.petrov.noue.common.json.rpc.Request;
+import website.petrov.noue.common.json.rpc.RequestBuilder;
+import website.petrov.noue.common.json.rpc.Response;
 import website.petrov.noue.common.viewmodel.BaseViewModel;
+import website.petrov.noue.model.LoginRequest;
 import website.petrov.noue.model.UserModel;
 import website.petrov.noue.repository.data.StorageShared;
 import website.petrov.noue.repository.fetch.APIService;
-import website.petrov.noue.repository.fetch.LoginAPI;
+import website.petrov.noue.repository.fetch.login.LoginAPI;
 import website.petrov.noue.utilities.Provider;
 
 public final class LoginViewModel extends BaseViewModel {
@@ -54,30 +58,48 @@ public final class LoginViewModel extends BaseViewModel {
         isLoginAttempting = true;
 
         final LoginAPI api = APIService.getInstance().create(LoginAPI.class);
-        final Observable<MessageResponse> response = api.request(email.getValue(), Provider.getDeviceId(context));
+        final Request request = new RequestBuilder()
+                .withParams(new Object[]{
+                        new LoginRequest(Provider.getDeviceId(context),
+                                StorageShared.getInstanceId(),
+                                Objects.requireNonNull(email.getValue()))
+                })
+                .build();
+        final Observable<Response> response = api.attempt(request);
         subscription = response.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(loginResponse -> {
-                    if (loginResponse.ok) {
-                        Log.d("LOGIN-OK", loginResponse.message);
+                    final Activity activity = Provider.getActivity(context);
+                    if (activity == null) {
+                        return;
+                    }
+
+                    if (loginResponse.result != null) {
+                        Log.d("LOGIN-OK", loginResponse.result.toString());
+
+                        final UserModel user = (UserModel) loginResponse.result;
+                        StorageShared.setAccountName(user.getName());
+                        StorageShared.setAccountAbout(user.getAbout());
+                        StorageShared.setAccountEmail(user.getEmail());
+
+                        activity.setResult(Activity.RESULT_OK);
                     } else {
-                        Log.d("LOGIN-FAIL", loginResponse.message);
+                        Log.d("LOGIN-FAIL", loginResponse.error.message);
+
+                        activity.setResult(Activity.RESULT_CANCELED);
                     }
 
                     isLoginAttempting = false;
+
+                    activity.finish();
                 }, error -> {
                     Log.d("FETCH-FAIL", error.getMessage());
 
                     isLoginAttempting = false;
 
-                    if (BuildConfig.DEBUG) {
-                        StorageShared.setFirstRunFlag(false);
-
-                        Activity activity = Provider.getActivity(context);
-                        if (activity != null) {
-                            activity.setResult(Activity.RESULT_OK);
-                            activity.finish();
-                        }
+                    final Activity activity = Provider.getActivity(context);
+                    if (activity != null) {
+                        activity.finish();
                     }
                 });
     }

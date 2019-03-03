@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 import static android.content.Context.MODE_PRIVATE;
 import static website.petrov.noue.utilities.Constants.Storage;
@@ -121,6 +122,24 @@ public final class StorageShared {
         editor.apply();
 
         needUpdate();
+    }
+
+    public static String getInstanceId() {
+        final String uuid = UUID.randomUUID().toString();
+
+        if (mStorage == null) {
+            return uuid;
+        }
+
+        if (mStorage.contains(Storage.STORAGE_INSTANCE_ID)) {
+            return mStorage.getString(Storage.STORAGE_INSTANCE_ID, uuid);
+        }
+
+        final Editor editor = mStorage.edit();
+        editor.putString(Storage.STORAGE_INSTANCE_ID, uuid);
+        editor.apply();
+
+        return uuid;
     }
 
     @Override

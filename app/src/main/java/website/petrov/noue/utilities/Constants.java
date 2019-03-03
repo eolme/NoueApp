@@ -52,6 +52,8 @@ public final class Constants {
         public static final String STORAGE_ACCOUNT_EMAIL = "storage_account_email";
         @Nls
         public static final String STORAGE_ACCOUNT_EMAIL_DEFAULT = "";
+        @NonNls
+        public static final String STORAGE_INSTANCE_ID = "storage_instance_id";
 
         private Storage() {} // hide constructor
     }
