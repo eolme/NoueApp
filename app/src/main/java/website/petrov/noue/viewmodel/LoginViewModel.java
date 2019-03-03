@@ -9,6 +9,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import java.util.Objects;
 
@@ -19,7 +20,6 @@ import io.reactivex.schedulers.Schedulers;
 import website.petrov.noue.common.json.rpc.Request;
 import website.petrov.noue.common.json.rpc.RequestBuilder;
 import website.petrov.noue.common.json.rpc.Response;
-import website.petrov.noue.common.viewmodel.BaseViewModel;
 import website.petrov.noue.model.LoginRequest;
 import website.petrov.noue.model.UserModel;
 import website.petrov.noue.repository.data.StorageShared;
@@ -27,7 +27,7 @@ import website.petrov.noue.repository.fetch.APIService;
 import website.petrov.noue.repository.fetch.login.LoginAPI;
 import website.petrov.noue.utilities.Provider;
 
-public final class LoginViewModel extends BaseViewModel {
+public final class LoginViewModel extends ViewModel {
     public MutableLiveData<String> email = new MutableLiveData<>();
     public boolean isLoginAttempting = false;
     @Nullable

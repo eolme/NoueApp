@@ -5,13 +5,13 @@ import android.content.Intent;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModel;
 
-import website.petrov.noue.common.viewmodel.BaseViewModel;
 import website.petrov.noue.utilities.Constants;
 import website.petrov.noue.utilities.Provider;
 import website.petrov.noue.view.activity.LoginActivity;
 
-public final class IntroViewModel extends BaseViewModel {
+public final class IntroViewModel extends ViewModel {
     public void startLogin(@NonNull View view) {
         view.setEnabled(false);
         final Activity activity = Provider.getActivity(view.getContext());
