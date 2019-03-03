@@ -1,5 +1,7 @@
 package website.petrov.noue.repository.fetch;
 
+import org.jetbrains.annotations.Contract;
+
 import javax.net.SocketFactory;
 
 import okhttp3.OkHttpClient;
@@ -14,6 +16,7 @@ public class APIService {
 
     private APIService() {} // hide constructor
 
+    @Contract("-> !null")
     public static Retrofit getInstance() {
         if (sInstance == null) {
             synchronized (Retrofit.class) {
