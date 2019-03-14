@@ -64,7 +64,7 @@ dependencies {
     implementation 'androidx.collection:collection:1.1.0-alpha02'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0-alpha01'
-    implementation 'androidx.core:core:1.1.0-alpha04'
+    implementation 'androidx.core:core:1.1.0-alpha05'
     implementation 'androidx.databinding:databinding-runtime:3.5.0-alpha07'
     implementation 'androidx.drawerlayout:drawerlayout:1.0.0'
     implementation 'androidx.fragment:fragment:1.1.0-alpha05'
