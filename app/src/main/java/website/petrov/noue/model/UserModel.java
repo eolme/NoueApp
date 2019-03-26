@@ -5,12 +5,12 @@ import androidx.annotation.Nullable;
 
 import org.jetbrains.annotations.Contract;
 
+import website.petrov.noue.common.model.IdentifiableModel;
 import website.petrov.noue.common.model.Model;
 import website.petrov.noue.repository.data.StorageShared;
-import website.petrov.noue.utilities.Provider;
+import website.petrov.noue.utils.ContextUtils;
 
-public final class UserModel implements Model {
-    private int id;
+public final class UserModel extends IdentifiableModel implements Model {
     @NonNull
     private String email;
     @Nullable
@@ -83,6 +83,6 @@ public final class UserModel implements Model {
     }
 
     public boolean isValidEmail() {
-        return Provider.isEmail(email);
+        return ContextUtils.isEmail(email);
     }
 }

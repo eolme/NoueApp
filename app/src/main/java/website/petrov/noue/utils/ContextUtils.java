@@ -1,4 +1,4 @@
-package website.petrov.noue.utilities;
+package website.petrov.noue.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -21,7 +21,7 @@ import androidx.core.app.ActivityCompat;
 
 import org.jetbrains.annotations.Contract;
 
-public final class Provider {
+public final class ContextUtils {
     /**
      * @param context the context
      * @return StatusBar's height in px
@@ -128,6 +128,9 @@ public final class Provider {
         return null;
     }
 
+    private ContextUtils() {
+    } // hide constructor
+
     @SuppressLint("HardwareIds")
     public static String getDeviceId(@NonNull Context context) {
         return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
@@ -138,5 +141,13 @@ public final class Provider {
         return email != null && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    private Provider() {} // hide constructor
+    @Contract("null -> fail")
+    @NonNull
+    public static Activity requireActivity(@Nullable Context context) {
+        final Activity activity = getActivity(context);
+        if (activity == null) {
+            throw new IllegalArgumentException("Context " + context + " does not belong to any activity.");
+        }
+        return activity;
+    }
 }

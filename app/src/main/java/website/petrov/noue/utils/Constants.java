@@ -1,4 +1,4 @@
-package website.petrov.noue.utilities;
+package website.petrov.noue.utils;
 
 import androidx.annotation.IntDef;
 
@@ -9,9 +9,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 public final class Constants {
-    public static final int FRAGMENT_CARD = 3143;
+    public static final int FRAGMENT_PROJECTS = 3143;
     public static final int FRAGMENT_FEED = 4333;
-    public static final int FRAGMENT_DEFAULT = -1;
     @NonNls
     public static final String FRAGMENT_TYPE = "fragmentType";
 
@@ -21,15 +20,22 @@ public final class Constants {
 
     public static final int STATE_HIDDEN = 683336;
     public static final int STATE_VISIBLE = 4828593;
-
-    @Retention(RetentionPolicy.SOURCE)
-    @IntDef({FRAGMENT_CARD, FRAGMENT_FEED, FRAGMENT_DEFAULT})
-    public @interface FragmentType {
-    }
+    public static final String ID_PROJECTS = "shortcut_projects";
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({STATE_HIDDEN, STATE_VISIBLE})
     public @interface ApplicationState {
+    }
+
+    public static final String ID_FEED = "shortcut_feed";
+    public static final String ACTION_PROJECTS = "website.petrov.noue.PROJECTS";
+    public static final String ACTION_FEED = "website.petrov.noue.FEED";
+    public static final String FEED_MODEL = "FeedModel";
+    public static final String PROJECT_ITEM_MODEL = "ProjectItemModel";
+
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef({FRAGMENT_PROJECTS, FRAGMENT_FEED})
+    public @interface FragmentType {
     }
 
     public static final class Storage {

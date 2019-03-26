@@ -4,16 +4,15 @@ import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 import website.petrov.noue.common.model.Model;
-import website.petrov.noue.common.repository.GenericDao;
+import website.petrov.noue.common.repository.BaseDao;
 import website.petrov.noue.model.FeedModel;
 import website.petrov.noue.model.ProjectItemModel;
 import website.petrov.noue.repository.gateway.FeedDao;
@@ -28,10 +27,8 @@ public final class StorageRepository {
     @NonNull
     private ProjectDao mProjectDao;
 
-    @Nullable
-    private LiveData<List<FeedModel>> mFeed;
-    @Nullable
-    private LiveData<List<ProjectItemModel>> mProjects;
+    private LiveData<List<FeedModel>> mFeedLive;
+    private LiveData<List<ProjectItemModel>> mProjectsLive;
 
     private StorageRepository(@NonNull Application application) {
         final StorageDatabase db = StorageDatabase.getDatabase(application);
@@ -50,41 +47,41 @@ public final class StorageRepository {
 
     @NonNull
     public LiveData<List<FeedModel>> getFeed() {
-        if (mFeed == null) {
-            mFeed = mFeedDao.getAll();
+        if (mFeedLive == null) {
+            mFeedLive = mFeedDao.getAll();
         }
-        return mFeed;
+        return mFeedLive;
     }
 
     @NonNull
     public LiveData<List<ProjectItemModel>> getProjects() {
-        if (mProjects == null) {
-            mProjects = mProjectDao.getAll();
+        if (mProjectsLive == null) {
+            mProjectsLive = mProjectDao.getAll();
         }
-        return mProjects;
+        return mProjectsLive;
     }
 
-    public void insertFeedModel(@NonNull FeedModel row) {
+    public void insertFeed(@NonNull FeedModel... row) {
         new InsertAsyncTask<>(mFeedDao).execute(row);
     }
 
-    public void insertProjectModel(@NonNull ProjectItemModel row) {
+    public void insertProject(@NonNull ProjectItemModel... row) {
         new InsertAsyncTask<>(mProjectDao).execute(row);
     }
 
-    private static class InsertAsyncTask<M extends Model, D extends GenericDao<M>> extends AsyncTask<M, Void, Void> {
+    private static class InsertAsyncTask<M extends Model> extends AsyncTask<M, Void, Void> {
         @NonNull
-        private D mAsyncTaskDao;
+        private BaseDao<M> mAsyncTaskDao;
 
-        InsertAsyncTask(@NonNull D dao) {
+        InsertAsyncTask(@NonNull BaseDao<M> dao) {
             mAsyncTaskDao = dao;
         }
 
         @SafeVarargs
         @Nullable
         @Override
-        protected final Void doInBackground(@NotNull M... params) {
-            mAsyncTaskDao.insert(params[0]);
+        protected final Void doInBackground(@NonNull M... params) {
+            mAsyncTaskDao.insertAll(params);
             return null;
         }
     }

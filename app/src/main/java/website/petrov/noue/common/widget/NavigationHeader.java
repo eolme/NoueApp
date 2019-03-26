@@ -11,7 +11,7 @@ import androidx.core.view.GravityCompat;
 
 import org.jetbrains.annotations.Contract;
 
-import website.petrov.noue.utilities.Provider;
+import website.petrov.noue.utils.ContextUtils;
 
 /**
  * A LinearLayout, which ignores any padding around children.
@@ -36,7 +36,7 @@ public final class NavigationHeader extends LinearLayoutCompat {
         super.setClipToPadding(true);
 
         if (getFitsSystemWindows()) {
-            super.setPadding(getPaddingLeft(), Provider.getStatusBarHeight(context),
+            super.setPadding(getPaddingLeft(), ContextUtils.getStatusBarHeight(context),
                     getPaddingRight(), getPaddingBottom());
         }
 

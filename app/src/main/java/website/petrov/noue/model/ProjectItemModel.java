@@ -3,16 +3,16 @@ package website.petrov.noue.model;
 import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Fts4;
-import androidx.room.PrimaryKey;
+import androidx.room.Index;
 
 import org.jetbrains.annotations.Contract;
 
+import website.petrov.noue.common.model.IdentifiableModel;
 import website.petrov.noue.common.model.Model;
 
-@Fts4
-@Entity(tableName = "project_item_table")
-public final class ProjectItemModel implements Model {
+@Entity(tableName = "project_item_table", primaryKeys = {"id"}, indices = {@Index(value = {"id"},
+        unique = true)})
+public final class ProjectItemModel extends IdentifiableModel implements Model {
     @ColumnInfo(name = "project_item_title")
     private String title;
 
@@ -25,11 +25,7 @@ public final class ProjectItemModel implements Model {
     @ColumnInfo(name = "project_item_badge")
     private Boolean badge;
 
-    @ColumnInfo(name = "rowid")
-    @PrimaryKey(autoGenerate = true)
-    private Integer id;
-
-    public ProjectItemModel(String title, String description, boolean badge, Integer background, Integer id) {
+    public ProjectItemModel(String title, String description, Boolean badge, Integer background, Integer id) {
         this.title = title;
         this.description = description;
         this.background = background;
@@ -95,14 +91,5 @@ public final class ProjectItemModel implements Model {
 
     public void setBadge(Boolean badge) {
         this.badge = badge;
-    }
-
-    @Contract(pure = true)
-    public Integer getId() {
-        return this.id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 }

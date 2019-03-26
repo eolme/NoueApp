@@ -3,15 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <import type="android.view.View" />
-
-        <variable
-            name="value"
-            type="website.petrov.noue.model.ProjectItemModel" />
-    </data>
-
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/project_item"
         android:layout_width="match_parent"
@@ -21,14 +12,15 @@
         android:focusable="true"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:onClick="@{ProjectsViewModel::onClick}"
         android:padding="16dp">
 
         <website.petrov.noue.common.widget.RoundImageView
             android:id="@+id/project_item_color"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@color/alternateColor"
-            tools:src="@color/alternateColor" />
+            app:color="@{value.background.intValue()}"
+            tools:src="@color/secondaryColor" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
@@ -65,5 +57,16 @@
             tools:src="@color/colorRed" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="website.petrov.noue.viewmodel.ProjectsViewModel" />
+
+        <variable
+            name="value"
+            type="website.petrov.noue.model.ProjectItemModel" />
+    </data>
 
 </layout>

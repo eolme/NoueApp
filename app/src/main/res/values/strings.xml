@@ -18,9 +18,9 @@
     <string name="empty">Nothing yet</string>
     <string name="error_field_required">Please fill out this field</string>
     <string name="error_incorrect_response">Failed to send link</string>
-    <string name="error_invalid_email">Check your email address</string>
+    <string name="error_invalid_email">Enter a valid email address</string>
     <string name="error_invalid_password">Password is too short</string>
-    <string name="error_request_email"></string>
+    <string name="error_request_email">Enter a valid email address</string>
     <string name="error_fragment">Oops! something went wrong…</string>
     <string name="intro_start">Start</string>
     <string name="info">Info</string>
@@ -54,10 +54,10 @@
     <string name="title_activity_about">About</string>
     <string name="soon">Soon</string>
     <string name="projects">Projects</string>
-    <string name="shortcut_label_feed_long" translatable="false">shortcut_label_feed_long</string>
-    <string name="shortcut_label_feed_short" translatable="false">shortcut_label_feed_short</string>
-    <string name="shortcut_label_feed_disabled" translatable="false">shortcut_label_feed_disabled</string>
-    <string name="shortcut_label_projects_long" translatable="false">shortcut_label_projects_long</string>
-    <string name="shortcut_label_projects_short" translatable="false">shortcut_label_projects_short</string>
-    <string name="shortcut_label_projects_disabled" translatable="false">shortcut_label_projects_disabled</string>
+    <string name="shortcut_label_feed_long">Open Feed</string>
+    <string name="shortcut_label_feed_short">Feed</string>
+    <string name="shortcut_label_feed_disabled">Feed unavailable</string>
+    <string name="shortcut_label_projects_long">Open Projects</string>
+    <string name="shortcut_label_projects_short">Projects</string>
+    <string name="shortcut_label_projects_disabled">Projects unavailable</string>
 </resources>

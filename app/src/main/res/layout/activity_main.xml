@@ -9,6 +9,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|top"
+            android:theme="@style/NoueTheme.Nav"
+            android:foregroundGravity="bottom"
+            app:headerLayout="@layout/nav_header"
+            app:itemBackground="@drawable/item_navigation"
+            app:itemTextAppearance="@style/TextAppearance.AppCompat.Body2"
+            app:itemTextColor="@drawable/item_navigation_text"
+            app:menu="@menu/drawer_view" />
+
         <website.petrov.noue.common.widget.FullscreenLayout
             android:id="@+id/main_fragment_container"
             android:layout_width="match_parent"
@@ -16,19 +29,7 @@
             android:fitsSystemWindows="false"
             android:orientation="vertical"
             app:darkIcon="true"
-            tools:layout="@layout/fragment_projects" />
-
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start|top"
-            android:theme="@style/NoueTheme.Nav"
-            app:headerLayout="@layout/nav_header"
-            app:itemBackground="@drawable/item_navigation"
-            app:itemTextAppearance="@style/TextAppearance.AppCompat.Body2"
-            app:itemTextColor="@drawable/item_navigation_text"
-            app:menu="@menu/drawer_view" />
+            tools:layout="@layout/fragment_recycler" />
 
     </androidx.drawerlayout.widget.DrawerLayout>
 

@@ -16,7 +16,7 @@
     <string name="error_incorrect_response">Неудалось отправить ссылку</string>
     <string name="error_invalid_email">Проверьте введенный email</string>
     <string name="error_invalid_password">Пароль слишком короткий</string>
-    <string name="error_request_email"></string>
+    <string name="error_request_email">Проверьте введенный email</string>
     <string name="error_fragment">Упс! Что-то пошло не так…</string>
     <string name="intro_start">Начать</string>
     <string name="info">Информация</string>
@@ -48,4 +48,10 @@
     <string name="projects">Проекты</string>
     <string name="title_activity_about">О приложении</string>
     <string name="title_activity_login">Вход</string>
+    <string name="shortcut_label_projects_short">Проекты</string>
+    <string name="shortcut_label_projects_long">Открыть Проекты</string>
+    <string name="shortcut_label_projects_disabled">Проекты недоступны</string>
+    <string name="shortcut_label_feed_short">Лента</string>
+    <string name="shortcut_label_feed_long">Открыть Ленту</string>
+    <string name="shortcut_label_feed_disabled">Лента недоступна</string>
 </resources>

@@ -9,14 +9,14 @@ import org.jetbrains.annotations.Contract;
 
 import java.util.List;
 
-import website.petrov.noue.model.SlideModel;
+import website.petrov.noue.common.model.Model;
 import website.petrov.noue.view.fragment.SlideFragment;
 
 public final class SlideAdapter extends FragmentStatePagerAdapter {
     @NonNull
-    private final List<SlideModel> mSlides;
+    private final List<Model> mSlides;
 
-    public SlideAdapter(@NonNull FragmentManager fm, @NonNull List<SlideModel> slides) {
+    public SlideAdapter(@NonNull FragmentManager fm, @NonNull List<Model> slides) {
         super(fm);
         mSlides = slides;
     }

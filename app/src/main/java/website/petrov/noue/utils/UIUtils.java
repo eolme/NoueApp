@@ -1,4 +1,4 @@
-package website.petrov.noue.utilities;
+package website.petrov.noue.utils;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,12 +10,15 @@ import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 
-public final class UI {
+public final class UIUtils {
+    private UIUtils() {
+    } // hide constructor
+
     /**
      * @param context the context
      */
     public static void setFullscreenLayout(@NonNull Context context, boolean darkIcon) {
-        final Activity activity = Provider.getActivity(context);
+        final Activity activity = ContextUtils.getActivity(context);
 
         if (activity == null) {
             return;
@@ -56,6 +59,4 @@ public final class UI {
 
         decor.setSystemUiVisibility(visibility);
     }
-
-    private UI() {} // hide constructor
 }

@@ -7,7 +7,7 @@
 
         <variable
             name="slide"
-            type="website.petrov.noue.model.SlideModel" />
+            type="website.petrov.noue.common.model.Model" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,5 +1,9 @@
 package website.petrov.noue.common.json.rpc;
 
+import androidx.annotation.NonNull;
+
+import org.jetbrains.annotations.Contract;
+
 @SuppressWarnings("WeakerAccess")
 public final class Response {
     public final String jsonrpc;
@@ -12,5 +16,17 @@ public final class Response {
         this.result = result;
         this.error = error;
         this.id = id;
+    }
+
+    @Contract(pure = true)
+    @NonNull
+    @Override
+    public String toString() {
+        return "Response{" +
+                "jsonrpc=" + jsonrpc + ", " +
+                "result=" + result + ", " +
+                "error=" + error + ", " +
+                "id=" + id +
+                "}";
     }
 }

@@ -8,7 +8,7 @@
     </style>
 
     <style name="Base.NoueTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!-- Remove ActionBar for specific UI -->
+        <!-- Remove ActionBar for specific UIUtils -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 

@@ -1,40 +1,34 @@
 package website.petrov.noue.repository.data;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.lang.ref.WeakReference;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.UUID;
 
 import static android.content.Context.MODE_PRIVATE;
-import static website.petrov.noue.utilities.Constants.Storage;
+import static website.petrov.noue.utils.Constants.Storage;
 
 public final class StorageShared {
     @Nullable
     private static SharedPreferences mStorage;
-    @Nullable
-    private static List<WeakReference<UpdateListener>> mListeners;
 
     public static void initialize(@NonNull Application app) {
         mStorage = app.getSharedPreferences(Storage.SHARED_PREFERENCES, MODE_PRIVATE);
     }
 
-    private static void needUpdate() {
-        if (mListeners != null) {
-            UpdateListener currentUpdateListener;
-            for (WeakReference<UpdateListener> listener : mListeners) {
-                currentUpdateListener = listener.get();
-                if (currentUpdateListener != null) {
-                    currentUpdateListener.onStorageUpdate();
-                }
-            }
+    @NonNull
+    public static SharedPreferences getStorageInstance(@NonNull Context fallback) {
+        if (mStorage == null) {
+            mStorage = fallback.getApplicationContext()
+                    .getSharedPreferences(Storage.SHARED_PREFERENCES, MODE_PRIVATE);
         }
+
+        return mStorage;
     }
 
     @NonNull
@@ -52,8 +46,6 @@ public final class StorageShared {
         final Editor editor = mStorage.edit();
         editor.putString(Storage.STORAGE_ACCOUNT_NAME, name);
         editor.apply();
-
-        needUpdate();
     }
 
     @NonNull
@@ -71,20 +63,6 @@ public final class StorageShared {
         final Editor editor = mStorage.edit();
         editor.putString(Storage.STORAGE_ACCOUNT_ABOUT, about);
         editor.apply();
-
-        needUpdate();
-    }
-
-    public static void register(@Nullable UpdateListener handler) {
-        if (handler == null) {
-            return;
-        }
-
-        if (mListeners == null) {
-            mListeners = new LinkedList<>();
-        }
-
-        mListeners.add(new WeakReference<>(handler));
     }
 
     @NonNull
@@ -102,8 +80,6 @@ public final class StorageShared {
         final Editor editor = mStorage.edit();
         editor.putString(Storage.STORAGE_ACCOUNT_EMAIL, email);
         editor.apply();
-
-        needUpdate();
     }
 
     public static boolean getFirstRunFlag() {
@@ -120,8 +96,6 @@ public final class StorageShared {
         final Editor editor = mStorage.edit();
         editor.putBoolean(Storage.STORAGE_FIRST_RUN, flag);
         editor.apply();
-
-        needUpdate();
     }
 
     public static String getInstanceId() {
@@ -140,20 +114,5 @@ public final class StorageShared {
         editor.apply();
 
         return uuid;
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        if (mListeners != null) {
-            for (WeakReference<UpdateListener> listener : mListeners) {
-                listener.enqueue();
-            }
-            mListeners.clear();
-        }
-        super.finalize();
-    }
-
-    public interface UpdateListener {
-        void onStorageUpdate();
     }
 }

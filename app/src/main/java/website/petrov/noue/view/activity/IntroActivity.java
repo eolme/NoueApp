@@ -14,7 +14,7 @@ import website.petrov.noue.common.activity.BaseApplicationActivity;
 import website.petrov.noue.common.animation.FadePageTransformer;
 import website.petrov.noue.databinding.ActivityIntroBinding;
 import website.petrov.noue.repository.data.StorageShared;
-import website.petrov.noue.utilities.Constants;
+import website.petrov.noue.utils.Constants;
 import website.petrov.noue.view.component.SlideAdapter;
 import website.petrov.noue.viewmodel.IntroViewModel;
 import website.petrov.noue.viewmodel.SlideViewModel;

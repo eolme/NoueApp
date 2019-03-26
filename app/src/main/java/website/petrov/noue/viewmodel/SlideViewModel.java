@@ -5,10 +5,10 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 
 import website.petrov.noue.R;
-import website.petrov.noue.common.viewmodel.BaseGenericContextViewModel;
+import website.petrov.noue.common.viewmodel.BaseContextViewModel;
 import website.petrov.noue.model.SlideModel;
 
-public final class SlideViewModel extends BaseGenericContextViewModel<SlideModel> {
+public final class SlideViewModel extends BaseContextViewModel {
     public SlideViewModel(@NonNull Application application) {
         super(application);
     }

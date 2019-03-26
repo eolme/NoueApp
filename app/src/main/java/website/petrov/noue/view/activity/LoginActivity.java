@@ -23,8 +23,8 @@ import java.util.Locale;
 import website.petrov.noue.R;
 import website.petrov.noue.common.activity.BaseActivity;
 import website.petrov.noue.databinding.ActivityLoginBinding;
-import website.petrov.noue.utilities.Constants;
-import website.petrov.noue.utilities.Provider;
+import website.petrov.noue.utils.Constants;
+import website.petrov.noue.utils.ContextUtils;
 import website.petrov.noue.viewmodel.LoginViewModel;
 
 import static android.Manifest.permission.GET_ACCOUNTS;
@@ -53,7 +53,7 @@ public final class LoginActivity extends BaseActivity {
                 binding.email.requestFocus();
             } else {
                 binding.emailLayout.setError(null);
-                Provider.clearFocus(binding.email);
+                ContextUtils.clearFocus(binding.email);
                 binding.loginProgress.setAlpha(0);
                 binding.loginProgress.setVisibility(View.VISIBLE);
                 binding.loginProgress.animate().setDuration(time).alpha(1);
@@ -103,7 +103,7 @@ public final class LoginActivity extends BaseActivity {
         String email;
         for (Account account : accounts) {
             email = account.name.toLowerCase(Locale.getDefault());
-            if (!emails.contains(email) && Provider.isEmail(email)) {
+            if (!emails.contains(email) && ContextUtils.isEmail(email)) {
                 emails.add(email);
             }
         }

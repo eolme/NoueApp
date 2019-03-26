@@ -1,20 +1,21 @@
 package website.petrov.noue.model;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Fts4;
-import androidx.room.PrimaryKey;
+import androidx.room.Index;
 
 import org.jetbrains.annotations.Contract;
 
 import java.util.ArrayList;
 
+import website.petrov.noue.common.model.IdentifiableModel;
 import website.petrov.noue.common.model.Model;
 
-@Fts4
-@Entity(tableName = "feed_table")
-public final class FeedModel implements Model {
+@Entity(tableName = "feed_table", primaryKeys = {"id"}, indices = {@Index(value = {"id"},
+        unique = true)})
+public final class FeedModel extends IdentifiableModel implements Model {
     @ColumnInfo(name = "feed_title")
     private String title;
 
@@ -23,10 +24,6 @@ public final class FeedModel implements Model {
 
     @ColumnInfo(name = "feed_avatars")
     private ArrayList<String> avatars = new ArrayList<>();
-
-    @ColumnInfo(name = "rowid")
-    @PrimaryKey(autoGenerate = true)
-    private Integer id;
 
     public FeedModel(String title, String description, ArrayList<String> avatars, Integer id) {
         this.title = title;
@@ -58,6 +55,11 @@ public final class FeedModel implements Model {
                 avatars.hashCode();
     }
 
+    @NonNull
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 
     @Contract(pure = true)
     public String getTitle() {
@@ -85,14 +87,5 @@ public final class FeedModel implements Model {
     public void setAvatars(ArrayList<String> avatars) {
         this.avatars.clear();
         this.avatars.addAll(avatars);
-    }
-
-    @Contract(pure = true)
-    public Integer getId() {
-        return this.id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 }

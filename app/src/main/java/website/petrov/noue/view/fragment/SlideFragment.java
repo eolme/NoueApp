@@ -11,14 +11,14 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import website.petrov.noue.R;
+import website.petrov.noue.common.model.Model;
 import website.petrov.noue.databinding.FragmentSlideBinding;
-import website.petrov.noue.model.SlideModel;
 
 public final class SlideFragment extends Fragment {
     @NonNull
-    private final SlideModel mSlide;
+    private final Model mSlide;
 
-    public SlideFragment(@NonNull SlideModel title) {
+    public SlideFragment(@NonNull Model title) {
         mSlide = title;
     }
 

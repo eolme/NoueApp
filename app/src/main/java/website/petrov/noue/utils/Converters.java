@@ -1,4 +1,4 @@
-package website.petrov.noue.utilities;
+package website.petrov.noue.utils;
 
 import androidx.annotation.Nullable;
 import androidx.room.TypeConverter;

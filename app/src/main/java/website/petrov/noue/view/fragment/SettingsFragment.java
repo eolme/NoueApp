@@ -3,7 +3,6 @@ package website.petrov.noue.view.fragment;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -20,7 +19,7 @@ import org.jetbrains.annotations.Contract;
 import java.util.ArrayList;
 
 import website.petrov.noue.R;
-import website.petrov.noue.utilities.Provider;
+import website.petrov.noue.utils.ContextUtils;
 
 public final class SettingsFragment extends PreferenceFragmentCompat
         implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -39,7 +38,7 @@ public final class SettingsFragment extends PreferenceFragmentCompat
         final Activity context = super.getActivity();
         if (context != null) {
             view.setPaddingRelative(0, 0, 0,
-                    Provider.getNavigationBarHeight(context) +
+                    ContextUtils.getNavigationBarHeight(context) +
                             (int) getResources().getDimension(R.dimen.margin_scroll_default)
             );
         }
@@ -83,7 +82,6 @@ public final class SettingsFragment extends PreferenceFragmentCompat
                 getPreferenceList(pGroup.getPreference(i), list);
             }
         } else {
-            Log.d("Added", pref.getKey());
             list.add(pref);
         }
         return list;

@@ -3,12 +3,12 @@ package website.petrov.noue.view.activity;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import website.petrov.noue.R;
+import website.petrov.noue.common.activity.BaseActivity;
 
-public final class AboutActivity extends AppCompatActivity {
+public final class AboutActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -9,13 +9,13 @@ import java.util.List;
 
 import website.petrov.noue.common.model.Model;
 
-public abstract class BaseGenericViewModel<M extends Model> extends ViewModel
+public abstract class BaseViewModel extends ViewModel
         implements DynamicViewModel {
 
-    private List<M> models;
+    private List<Model> models;
 
     @Contract("-> !null")
-    public List<M> getData() {
+    public List<Model> getData() {
         if (models == null) {
             models = new ArrayList<>();
             load();

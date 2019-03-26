@@ -3,13 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="value"
-            type="website.petrov.noue.model.FeedModel" />
-    </data>
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_view"
         style="@style/Widget.MaterialComponents.CardView"
@@ -25,12 +18,12 @@
         android:minWidth="216dp"
         android:minHeight="216dp"
         android:transitionGroup="true"
+        android:onClick="@{FeedViewModel::onClick}"
         app:cardCornerRadius="@dimen/corner_radius"
         app:cardElevation="@dimen/card_elevation_1"
         app:cardUseCompatPadding="true"
         tools:cardElevation="@dimen/card_elevation_3"
-        tools:layout_gravity="center"
-        tools:showIn="@layout/fragment_feed">
+        tools:layout_gravity="center">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/card_layout"
@@ -91,5 +84,14 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
+    <data>
+
+        <import type="website.petrov.noue.viewmodel.FeedViewModel" />
+
+        <variable
+            name="value"
+            type="website.petrov.noue.model.FeedModel" />
+    </data>
 
 </layout>

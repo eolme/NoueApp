@@ -10,7 +10,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import website.petrov.noue.common.component.SafeSocketFactory;
 
-import static website.petrov.noue.utilities.Constants.API.BASE_URL;
+import static website.petrov.noue.utils.Constants.API.BASE_URL;
 
 public class APIService {
     private static volatile Retrofit sInstance;

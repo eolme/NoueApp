@@ -10,8 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import website.petrov.noue.R;
-import website.petrov.noue.utilities.Provider;
-import website.petrov.noue.utilities.UI;
+import website.petrov.noue.utils.ContextUtils;
+import website.petrov.noue.utils.UIUtils;
 
 public class FullscreenLayout extends FrameLayout {
     public FullscreenLayout(@NonNull Context context) {
@@ -35,13 +35,13 @@ public class FullscreenLayout extends FrameLayout {
     }
 
     private void init(boolean darkIcon) {
-        final Activity activity = Provider.getActivity(getContext());
+        final Activity activity = ContextUtils.getActivity(getContext());
         if (activity != null) {
-            UI.setFullscreenLayout(activity, darkIcon);
+            UIUtils.setFullscreenLayout(activity, darkIcon);
         }
         if (getFitsSystemWindows()) {
-            final int statusBarHeight = Provider.getStatusBarHeight(activity);
-            final int navigationBarHeight = Provider.getNavigationBarHeight(activity);
+            final int statusBarHeight = ContextUtils.getStatusBarHeight(activity);
+            final int navigationBarHeight = ContextUtils.getNavigationBarHeight(activity);
             this.setPaddingRelative(0, statusBarHeight, 0, navigationBarHeight);
         }
     }

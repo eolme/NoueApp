@@ -12,17 +12,17 @@ import java.util.List;
 
 import website.petrov.noue.common.model.Model;
 
-public abstract class BaseGenericContextViewModel<M extends Model> extends AndroidViewModel
+public abstract class BaseContextViewModel extends AndroidViewModel
         implements DynamicViewModel {
 
-    protected List<M> models;
+    protected List<Model> models;
 
-    public BaseGenericContextViewModel(@NonNull Application application) {
+    public BaseContextViewModel(@NonNull Application application) {
         super(application);
     }
 
     @Contract("-> !null")
-    public List<M> getData() {
+    public List<Model> getData() {
         if (models == null) {
             models = new ArrayList<>();
             load();

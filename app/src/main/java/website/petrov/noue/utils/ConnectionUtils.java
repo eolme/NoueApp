@@ -1,4 +1,4 @@
-package website.petrov.noue.utilities;
+package website.petrov.noue.utils;
 
 import android.os.AsyncTask;
 
@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
-public final class Connection {
+public final class ConnectionUtils {
     public interface Consumer {
         void accept(Boolean internet);
     }
@@ -40,5 +40,6 @@ public final class Connection {
         }
     }
 
-    private Connection() {} // hide constructor
+    private ConnectionUtils() {
+    } // hide constructor
 }

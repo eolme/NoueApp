@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shortcuts xmlns:android="http://schemas.android.com/apk/res/android"
+<shortcuts
     xmlns:tools="http://schemas.android.com/tools"
-    tools:targetApi="p">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:targetApi="n_mr1">
     <shortcut
         android:enabled="true"
         android:icon="@drawable/ic_feed"
         android:shortcutDisabledMessage="@string/shortcut_label_feed_disabled"
-        android:shortcutId="feed"
+        android:shortcutId="shortcut_feed"
         android:shortcutLongLabel="@string/shortcut_label_feed_long"
         android:shortcutShortLabel="@string/shortcut_label_feed_short">
         <intent
-            android:action="android.intent.action.VIEW"
-            android:targetClass="website.petrov.noue.MainActivity"
+            android:action="website.petrov.noue.FEED"
+            android:targetClass="website.petrov.noue.view.activity.MainActivity"
             android:targetPackage="website.petrov.noue">
             <extra
                 android:name="SHORTCUT_ID"
-                android:value="feed" />
+                android:value="shortcut_feed" />
         </intent>
     </shortcut>
     <shortcut
         android:enabled="true"
         android:icon="@drawable/ic_cards"
         android:shortcutDisabledMessage="@string/shortcut_label_projects_disabled"
-        android:shortcutId="projects"
+        android:shortcutId="shortcut_projects"
         android:shortcutLongLabel="@string/shortcut_label_projects_long"
         android:shortcutShortLabel="@string/shortcut_label_projects_short">
         <intent
-            android:action="android.intent.action.VIEW"
-            android:targetClass="website.petrov.noue.MainActivity"
+            android:action="website.petrov.noue.PROJECTS"
+            android:targetClass="website.petrov.noue.view.activity.MainActivity"
             android:targetPackage="website.petrov.noue">
             <extra
                 android:name="SHORTCUT_ID"
-                android:value="feed" />
+                android:value="shortcut_projects" />
         </intent>
     </shortcut>
 </shortcuts>

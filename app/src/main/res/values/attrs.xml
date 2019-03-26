@@ -4,7 +4,6 @@
 
     <declare-styleable name="RoundImageView">
         <attr name="color" format="color" />
-        <attr name="background_color" format="color" />
     </declare-styleable>
 
     <declare-styleable name="FullscreenLayout">

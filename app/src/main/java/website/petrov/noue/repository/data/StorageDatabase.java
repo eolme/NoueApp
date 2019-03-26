@@ -16,7 +16,7 @@ import website.petrov.noue.model.FeedModel;
 import website.petrov.noue.model.ProjectItemModel;
 import website.petrov.noue.repository.gateway.FeedDao;
 import website.petrov.noue.repository.gateway.ProjectDao;
-import website.petrov.noue.utilities.Converters;
+import website.petrov.noue.utils.Converters;
 
 @Database(entities = {FeedModel.class, ProjectItemModel.class}, version = BuildConfig.VERSION_CODE)
 @TypeConverters({Converters.class})

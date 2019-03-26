@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="website.petrov.noue.view.activity.ProjectActivity">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        style="@style/NoueTheme.Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="@string/soon" />
+    <website.petrov.kanban.widget.BoardView
+        android:id="@+id/kanban"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:darkIcon="true" />
 
-</FrameLayout>
+</layout>

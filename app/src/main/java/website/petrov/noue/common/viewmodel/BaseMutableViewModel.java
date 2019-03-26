@@ -8,15 +8,15 @@ import org.jetbrains.annotations.Contract;
 
 import java.util.List;
 
-import website.petrov.noue.common.model.Model;
+import website.petrov.noue.common.model.IdentifiableModel;
 
-public abstract class BaseMutableGenericViewModel<M extends Model> extends ViewModel
+public abstract class BaseMutableViewModel extends ViewModel
         implements DynamicViewModel {
 
-    private MutableLiveData<List<M>> models;
+    private MutableLiveData<List<IdentifiableModel>> models;
 
     @Contract("-> !null")
-    public LiveData<List<M>> getData() {
+    public LiveData<List<IdentifiableModel>> getData() {
         if (models == null) {
             models = new MutableLiveData<>();
             load();

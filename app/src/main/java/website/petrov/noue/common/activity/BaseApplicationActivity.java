@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 import org.jetbrains.annotations.Contract;
 
-import website.petrov.noue.utilities.Constants;
+import website.petrov.noue.utils.Constants;
 
 public abstract class BaseApplicationActivity extends BaseActivity {
     @Constants.ApplicationState

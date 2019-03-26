@@ -33,16 +33,12 @@ import website.petrov.noue.R;
 public final class RoundImageView extends AppCompatImageView {
     @NonNull
     private final Paint mPaint;
-    @NonNull
-    private final Paint mPaintBackground;
     @Px
     private int mCanvasSize;
     @Nullable
     private ColorFilter mColorFilter;
     @Nullable
     private Bitmap mImage;
-    @Nullable
-    private Drawable mDrawable;
 
     public RoundImageView(@NonNull Context context) {
         this(context, null);
@@ -58,21 +54,15 @@ public final class RoundImageView extends AppCompatImageView {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
 
-        mPaintBackground = new Paint();
-        mPaintBackground.setAntiAlias(true);
-
         final TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.RoundImageView, defStyleAttr, 0);
-        setFromColor(attributes.getColor(R.styleable.RoundImageView_color, Color.WHITE));
-        setBackgroundColor(attributes.getColor(R.styleable.RoundImageView_background_color, Color.WHITE));
+        if (attributes.hasValue(R.styleable.RoundImageView_color)) {
+            setColor(attributes.getColor(R.styleable.RoundImageView_color, Color.WHITE));
+        }
         attributes.recycle();
     }
 
-    public void setFromColor(@ColorInt int color) {
-        setImageDrawable(new ColorDrawable(color));
-    }
-
-    public void setBackgroundColor(@ColorInt int backgroundColor) {
-        mPaintBackground.setColor(backgroundColor);
+    public void setColor(@ColorInt int color) {
+        setImageDrawable(new ColorDrawable(color | 0xFF000000));
         invalidate();
     }
 
@@ -83,7 +73,6 @@ public final class RoundImageView extends AppCompatImageView {
         }
 
         mColorFilter = colorFilter;
-        mDrawable = null;
         invalidate();
     }
 
@@ -105,13 +94,9 @@ public final class RoundImageView extends AppCompatImageView {
 
     @Override
     public void onDraw(@NonNull Canvas canvas) {
-        final Drawable currentDrawable = getDrawable();
+        mImage = drawableToBitmap(getDrawable());
 
-        if (!Objects.equals(mDrawable, currentDrawable)) {
-            mDrawable = currentDrawable;
-            mImage = drawableToBitmap(mDrawable);
-            updateShader();
-        }
+        updateShader();
 
         if (mImage == null) {
             return;
@@ -123,7 +108,6 @@ public final class RoundImageView extends AppCompatImageView {
 
         @Px final int circleCenter = mCanvasSize / 2;
 
-        canvas.drawCircle(circleCenter, circleCenter, circleCenter, mPaintBackground);
         canvas.drawCircle(circleCenter, circleCenter, circleCenter, mPaint);
     }
 

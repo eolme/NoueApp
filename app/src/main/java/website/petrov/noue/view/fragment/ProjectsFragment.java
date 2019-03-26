@@ -1,67 +1,39 @@
 package website.petrov.noue.view.fragment;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.view.ViewCompat;
-import androidx.core.widget.ContentLoadingProgressBar;
-import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.ref.WeakReference;
+import org.jetbrains.annotations.Contract;
 
 import website.petrov.noue.R;
-import website.petrov.noue.view.component.ProjectsAdapter;
+import website.petrov.noue.common.component.RecyclerAdapter;
+import website.petrov.noue.common.fragment.RecyclerFragment;
+import website.petrov.noue.common.viewmodel.BaseMutableContextViewModel;
+import website.petrov.noue.repository.data.StorageRepository;
 import website.petrov.noue.viewmodel.ProjectsViewModel;
 
-public final class ProjectsFragment extends Fragment {
-    private ProjectsViewModel viewModel;
-    private WeakReference<RecyclerView> recyclerView;
+public final class ProjectsFragment extends RecyclerFragment {
 
+    @Contract(value = "-> new", pure = true)
+    @NonNull
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-
-        viewModel = ViewModelProviders.of(this).get(ProjectsViewModel.class);
+    protected RecyclerAdapter getRecyclerAdapter() {
+        return new RecyclerAdapter(R.layout.fragment_project_item);
     }
 
+    @Contract(value = "-> new", pure = true)
+    @NonNull
     @Override
-    @Nullable
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        final View self = inflater.inflate(R.layout.fragment_projects, container, false);
-        if (self != null) {
-            final ProjectsAdapter adapter = new ProjectsAdapter();
-            final ContentLoadingProgressBar bar = ViewCompat.requireViewById(self, R.id.projects_progress);
-
-            recyclerView = new WeakReference<>(ViewCompat.requireViewById(self, R.id.projects_list));
-            recyclerView.get().setAdapter(adapter);
-
-            viewModel.getData().observe(this, adapter::updateData);
-
-            self.postDelayed(() -> {
-                bar.setVisibility(View.GONE);
-                recyclerView.get().setVisibility(View.VISIBLE);
-            }, 2000);
-        }
-        return self;
+    protected BaseMutableContextViewModel getViewModel() {
+        return ViewModelProviders.of(this).get(ProjectsViewModel.class);
     }
 
+    @SuppressWarnings("unchecked")
+    @Contract(pure = true)
+    @NonNull
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-
-        final RecyclerView recycler = recyclerView.get();
-        if (recycler != null && recycler.getAdapter() != null) {
-            recycler.setAdapter(null);
-        }
-
-        recyclerView.enqueue();
+    protected LiveData getCachedModels() {
+        return StorageRepository.getInstance().getProjects();
     }
 }
