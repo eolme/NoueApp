@@ -89,7 +89,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
 
     annotationProcessor 'androidx.room:room-compiler:2.1.0-alpha06'
-    annotationProcessor 'androidx.databinding:databinding-compiler:3.5.0-alpha08'
+    annotationProcessor 'androidx.databinding:databinding-compiler:3.5.0-alpha09'
 
     implementation 'org.jetbrains:annotations:17.0.0'
 
