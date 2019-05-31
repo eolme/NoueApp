@@ -88,7 +88,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
 
-    annotationProcessor 'androidx.room:room-compiler:2.1.0-beta01'
+    annotationProcessor 'androidx.room:room-compiler:2.1.0-rc01'
     annotationProcessor 'androidx.databinding:databinding-compiler:3.6.0-alpha02'
 
     implementation 'org.jetbrains:annotations:17.0.0'
